@@ -8,6 +8,7 @@ import BikeDetails from './layout/BikeDetails';
 
 import Login from './auth/Login';
 import SignUp from './auth/SignUp';
+import UserPage from '../containers/UserPage';
 
 const App = () => (
   <BrowserRouter>
@@ -18,7 +19,7 @@ const App = () => (
         <Route path="/bikes/" component={BikeList} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-
+        <Route path="/user" component={UserPage} />
         <Route path="/" component={Home} />
       </Switch>
     </div>
