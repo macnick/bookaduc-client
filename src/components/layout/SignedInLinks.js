@@ -5,7 +5,7 @@ const SingedInLinks = () => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/">Bikes</NavLink>
+        <NavLink to="/bikes">Bikes</NavLink>
       </li>
       <li>
         <NavLink to="/">Log Out</NavLink>
