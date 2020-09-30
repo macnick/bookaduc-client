@@ -1,8 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d1299b7f-7200-4245-a14c-ae688bafeaf8/deploy-status)](https://app.netlify.com/sites/motogp-macnick/deploys)
 
-# MotoGP Database
+# BookADuc App
 
-MotoGP championship 2020 team info. Catalogue of Statistics. Single Page App for MotoGP fans. Fast, dynamic and responsive build with React & Redux. Data from the [thesportsdb API](https://www.thesportsdb.com/).
+This is the final Microverse's capstone project!! The purpose of the project is to create a Full-Stack app that works with a backend in Rails and a Frontend in React. This repo contains the frontend project. It's a React app that works as an interface to handle connections to the backend API. The main features you will find here are: Single Page App for MotoGP fans. Fast, dynamic and responsive build with React & Redux. Data from the [thesportsdb API](https://www.thesportsdb.com/).
 
 ## Table of Contents
 
