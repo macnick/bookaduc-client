@@ -27,9 +27,19 @@ const initState = {
     },
   ],
 };
+const ADD_BOOKING = 'ADD_BOOKING';
 
 const bookingReducer = (state = initState, action) => {
-  return state;
+  switch (action.type) {
+    case ADD_BOOKING:
+      // return {
+      //   ...state,
+      //   loading: true,
+      // };
+      console.log('booked!', action.bookingDetails);
+    default:
+      return state;
+  }
 };
 
 export default bookingReducer;

@@ -7,7 +7,7 @@ import {
   ALL_BIKES,
   BIKE_INFO,
   GET_BIKE_SUCCESS,
-} from './actions';
+} from './actionTypes';
 
 const fetchRequest = () => ({
   type: FETCH_REQUEST,

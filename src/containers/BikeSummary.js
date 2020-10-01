@@ -11,6 +11,9 @@ const BikeSummary = ({ bike }) => {
         <p className="grey-text">Torque: {bike.torque}</p>
         <p className="grey-text">Weight: {bike.weight}</p>
       </div>
+      <div className="input-field">
+        <button className="btn pink lighten-1 z-depth-1">Book a ride</button>
+      </div>
     </div>
   );
 };
