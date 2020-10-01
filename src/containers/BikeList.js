@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BikeSummary from './BikeSummary';
+import { connect } from 'react-redux';
 
-class BikeList extends Component {
-  render() {
-    return (
-      <div className="dashboard container">
-        <BikeSummary />
-        <BikeSummary />
-        <BikeSummary />
-      </div>
-    );
-  }
-}
+const BikeList = ({ bikes }) => {
+  // const { bikes } = this.props;
+  console.log(bikes);
+  return (
+    <div className="dashboard container">
+      {bikes &&
+        bikes.map((bike) => {
+          return <BikeSummary bike={bike} key={bike.id} />;
+        })}
+    </div>
+  );
+};
 
-export default BikeList;
+const mapStateToProps = (state) => {
+  return {
+    bikes: state.bikes.bikes,
+  };
+};
+
+export default connect(mapStateToProps, null)(BikeList);

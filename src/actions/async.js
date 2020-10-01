@@ -4,9 +4,9 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE,
   BASE_URL,
-  ALL_TEAMS,
-  TEAM_INFO,
-  GET_TEAM_SUCCESS,
+  ALL_BIKES,
+  BIKE_INFO,
+  GET_BIKE_SUCCESS,
 } from './actions';
 
 const fetchRequest = () => ({
@@ -14,45 +14,43 @@ const fetchRequest = () => ({
   loading: true,
 });
 
-const fetchSuccess = data => ({
+const fetchSuccess = (data) => ({
   type: FETCH_SUCCESS,
   payload: data,
 });
 
-const fetchTeamSuccess = data => ({
-  type: GET_TEAM_SUCCESS,
+const fetchBikeSuccess = (data) => ({
+  type: GET_BIKE_SUCCESS,
   payload: data,
 });
 
-const fetchFailure = error => ({
+const fetchFailure = (error) => ({
   type: FETCH_FAILURE,
   payload: error,
 });
 
-const fetchTeams = () => dispatch => {
+const fetchBikes = () => (dispatch) => {
   dispatch(fetchRequest());
   axios
-    .get(`${BASE_URL}${ALL_TEAMS}`)
-    .then(response => {
+    .get(`${BASE_URL}${ALL_BIKES}`)
+    .then((response) => {
       dispatch(fetchSuccess(response.data));
     })
-    .catch(error => {
+    .catch((error) => {
       dispatch(fetchFailure(error.message));
     });
 };
 
-const fetchTeamInfo = id => dispatch => {
+const fetchBikeInfo = (id) => (dispatch) => {
   dispatch(fetchRequest());
   axios
-    .get(`${BASE_URL}${TEAM_INFO}${id}`)
-    .then(response => {
-      dispatch(fetchTeamSuccess(response.data));
+    .get(`${BASE_URL}${BIKE_INFO}${id}`)
+    .then((response) => {
+      dispatch(fetchBikeSuccess(response.data));
     })
-    .catch(error => {
+    .catch((error) => {
       dispatch(fetchFailure(error.message));
     });
 };
 
-export {
-  fetchRequest, fetchSuccess, fetchFailure, fetchTeams, fetchTeamInfo,
-};
+export { fetchRequest, fetchSuccess, fetchFailure, fetchBikes, fetchBikeInfo };
