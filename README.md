@@ -40,31 +40,15 @@ This is the final Microverse's capstone project!! The purpose of the project is 
 
 ## Live version
 
-A live version is hosted on Netlify.
+A live version will be hosted on Netlify.
 
-- [**BookADuc**](https://book-a-duc.netlify.app/) @ Netlify
+- [**BookADuc**] @ Netlify
 
 [Up](#Table-of-Contents)
 
 ## Screenshots
 
-### Home, list of all teams
-
-<p align="center">
-<img src="src/assets/img/screenshot1.png">
-</p>
-
-### Team Details
-
-<p align="center">
-<img src="src/assets/img/screenshot2.png">
-</p>
-
-### Mobile
-
-<p align="center">
-<img src="src/assets/img/screenshot3.png">
-</p>
+### Login Page
 
 [Up](#Table-of-Contents)
 
@@ -74,14 +58,9 @@ To run the scripts **npm** is required. To get npm you have to install [Node.js]
 
 Use your terminal and run the commands after each instruction.
 
-| Command                                              | Description                                           |
-| ---------------------------------------------------- | ----------------------------------------------------- |
-| `git clone https://github.com/macnick/motogp-db.git` | Clone the repository to you computer                  |
-| `cd rmotogp-db`                                      | Navigate to the newly created folder                  |
-| `npm install`                                        | Install dependencies and launch browser with examples |
-| `npm start`                                          | Makes the build and starts the development server     |
-|                                                      | Press `Ctrl + c` to kill **http-server** process      |
-| `http://localhost:3000`                              | Visit this link to use the motogp-db                  |
+| Command | Description |
+| ------- | ----------- |
+
 
 [Up](#Table-of-Contents)
 
