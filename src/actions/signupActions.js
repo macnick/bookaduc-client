@@ -28,7 +28,7 @@ const signup = (user) => (dispatch) => {
   axios
     .post(`${BASE_URL}${SIGNUP_URL}`, user)
     .then((response) => {
-      console.log('response: ', response);
+      console.log('response: ', response.data);
       dispatch(signupSuccess(response.data));
     })
     .catch((error) => {

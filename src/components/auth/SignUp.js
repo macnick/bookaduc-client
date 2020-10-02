@@ -7,6 +7,7 @@ class SignUp extends Component {
     name: '',
     email: '',
     password: '',
+    msg: '',
   };
 
   handleSubmit = (e) => {
@@ -17,6 +18,7 @@ class SignUp extends Component {
       name: '',
       email: '',
       password: '',
+      msg: '',
     });
   };
 
