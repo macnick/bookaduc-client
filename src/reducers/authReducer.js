@@ -2,8 +2,9 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  BASE_URL,
-  LOGIN_URL,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAIL,
 } from '../actions/actionTypes';
 
 const initState = {
@@ -15,12 +16,13 @@ const initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
+    case SIGNUP_REQUEST:
       return {
         ...state,
         loading: true,
       };
     case LOGIN_SUCCESS:
-      // case REGISTER_SUCCESS:
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         token: action.payload.auth_token,
@@ -28,9 +30,9 @@ const authReducer = (state = initState, action) => {
         loading: false,
       };
     // case AUTH_ERROR:
+    // case LOGOUT_SUCCESS:
     case LOGIN_FAIL:
-      // case LOGOUT_SUCCESS:
-      // case REGISTER_FAIL:
+    case SIGNUP_FAIL:
       return {
         ...state,
         authStatus: false,

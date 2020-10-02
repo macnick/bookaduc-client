@@ -24,7 +24,6 @@ const loginFail = (error) => ({
 });
 
 const login = (user) => (dispatch) => {
-  console.log('user in login:', user);
   dispatch(loginRequest());
   axios
     .post(`${BASE_URL}${LOGIN_URL}`, user)
@@ -37,16 +36,4 @@ const login = (user) => (dispatch) => {
     });
 };
 
-// const fetchBikeInfo = (id) => (dispatch) => {
-//   dispatch(fetchRequest());
-//   axios
-//     .get(`${BASE_URL}${BIKE_INFO}${id}`)
-//     .then((response) => {
-//       dispatch(fetchBikeSuccess(response.data));
-//     })
-//     .catch((error) => {
-//       dispatch(fetchFailure(error.message));
-//     });
-// };
-
-export { login, loginRequest, loginSuccess, loginFail };
+export { login };

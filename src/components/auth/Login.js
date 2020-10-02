@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/loginActions';
-import store from '../../reducers/store';
-// import LoggedOutLinks from '../layout/LoggedOutLinks';
 
 class Login extends Component {
   state = {
@@ -12,9 +10,8 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const user = this.state;
     console.log(this.state);
-    store.dispatch(login(user));
+    this.props.login(this.state);
     this.setState({
       email: '',
       password: '',
@@ -48,10 +45,6 @@ class Login extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   user: state.teamsList.team,
-// });
 
 const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(login(user)),
