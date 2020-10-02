@@ -1,4 +1,0 @@
-{
-  "testRegex": "((\\.|/*.)(test))\\.js?$",
-  "clearMocks": "true"
-}
