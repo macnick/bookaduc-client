@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d1299b7f-7200-4245-a14c-ae688bafeaf8/deploy-status)](https://app.netlify.com/sites/motogp-macnick/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d1299b7f-7200-4245-a14c-ae688bafeaf/deploy-status)](https://app.netlify.com/sites/motogp-macnick/deploys)
 
 # BookADuc App
 
