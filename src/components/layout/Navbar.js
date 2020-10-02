@@ -8,7 +8,6 @@ class Navbar extends Component {
   render() {
     const loggedIn = this.props.loggedIn;
 
-    // console.log('loggedin:', loggedIn);
     return (
       <nav className="nav-wrapper grey darken-3">
         <div className="container">

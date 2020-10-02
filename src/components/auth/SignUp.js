@@ -12,7 +12,6 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     this.props.signup(this.state);
     this.setState({
       name: '',
@@ -48,6 +47,8 @@ class SignUp extends Component {
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-1">Sign Up</button>
           </div>
+          <p className="grey-text">Already a user?</p>
+          <a href="/login">Login</a>
         </form>
       </div>
     );

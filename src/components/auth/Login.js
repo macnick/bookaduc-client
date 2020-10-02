@@ -10,7 +10,6 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     this.props.login(this.state);
     this.setState({
       email: '',
@@ -40,6 +39,8 @@ class Login extends Component {
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-1">Login</button>
           </div>
+          <p className="grey-text">Don't have an account?</p>
+          <a href="/signup">Signup</a>
         </form>
       </div>
     );

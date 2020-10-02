@@ -4,11 +4,13 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'SIGNUP_FAIL';
+export const GET_BIKE_REQUEST = 'GET_BIKE_REQUEST';
+export const GET_BIKE_SUCCESS = 'GET_BIKE_SUCCESS';
+export const GET_BIKE_FAIL = 'GET_BIKE_FAIL';
 
 export const FETCH_REQUEST = 'FETCH_REQUEST';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
-export const GET_BIKE_SUCCESS = 'GET_BIKE_SUCCESS';
 export const BIKE_NOT_FOUND = 'BIKE_NOT_FOUND';
 export const USER_LOADING = 'USER_LOADING';
 export const AUTH_ERROR = 'AUTH_ERROR';
