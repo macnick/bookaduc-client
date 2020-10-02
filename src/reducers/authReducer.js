@@ -1,33 +1,41 @@
 import {
-  AUTH_ERROR,
+  LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT_SUCCESS,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
+  BASE_URL,
+  LOGIN_URL,
 } from '../actions/actionTypes';
 
 const initState = {
   token: '',
   authStatus: false,
+  loading: false,
 };
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case LOGIN_SUCCESS:
-    case REGISTER_SUCCESS:
+    case LOGIN_REQUEST:
       return {
+        ...state,
+        loading: true,
+      };
+    case LOGIN_SUCCESS:
+      // case REGISTER_SUCCESS:
+      return {
+        ...state,
         token: action.payload.auth_token,
         authStatus: true,
+        loading: false,
       };
-    case AUTH_ERROR:
+    // case AUTH_ERROR:
     case LOGIN_FAIL:
-    case REGISTER_FAIL:
-    case LOGOUT_SUCCESS:
+      // case LOGOUT_SUCCESS:
+      // case REGISTER_FAIL:
       return {
-        msg: '',
+        ...state,
         authStatus: false,
         token: '',
+        loading: false,
       };
     default:
       return state;

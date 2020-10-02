@@ -37,6 +37,7 @@ const bookingReducer = (state = initState, action) => {
       //   loading: true,
       // };
       console.log('booked!', action.bookingDetails);
+      return state;
     default:
       return state;
   }

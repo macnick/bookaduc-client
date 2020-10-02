@@ -1,7 +1,6 @@
 import { GET_ERRORS, CLEAR_ERRORS } from '../actions/actionTypes';
 
 const initState = {
-  token: '',
   authStatus: false,
   msg: '',
 };
@@ -17,7 +16,6 @@ const errorReducer = (state = initState, action) => {
       return {
         msg: '',
         authStatus: false,
-        token: '',
       };
     default:
       return state;
