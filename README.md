@@ -2,7 +2,13 @@
 
 # BookADuc App
 
-This is the final Microverse's capstone project!! The purpose of the project is to create a Full-Stack app that works with a backend in Rails and a Frontend in React. This repo contains the frontend project. It's a React app that works as an interface to handle connections to the backend API. The main features you will find here are: Single Page App for MotoGP fans. Fast, dynamic and responsive build with React & Redux. Data from the [thesportsdb API](https://www.thesportsdb.com/).
+This is the final Microverse's capstone project!! The purpose of the project is to create a Full-Stack app that works with a backend in Rails and a Frontend in React. This repo contains the frontend project. It's a React app that works as an interface to handle connections to the backend API. The user can
+
+1. Create and authenticate users
+2. Get a list of available bikes to ride
+3. Book an appointment for a ride
+4. See the list of the user's appointments
+5. Navigate using the sidebar
 
 ## Table of Contents
 
@@ -36,15 +42,7 @@ This is the final Microverse's capstone project!! The purpose of the project is 
 
 A live version is hosted on Netlify.
 
-- [**Motogp**](https://motogp-macnick.netlify.app/) @ Netlify
-
-[Up](#Table-of-Contents)
-
-## Video
-
-Here is a video explanation of the project
-
-- [**Motogp**](https://www.loom.com/share/1d4c318ce48a43bcac3e2f1e5590911f) @ Loom
+- [**BookADuc**](https://book-a-duc.netlify.app/) @ Netlify
 
 [Up](#Table-of-Contents)
 
