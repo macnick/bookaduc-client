@@ -7,6 +7,7 @@ import {
   BASE_URL,
   LOGIN_URL,
 } from './actionTypes';
+import { bikesList } from './bikeActions';
 
 const loginRequest = () => ({
   type: LOGIN_REQUEST,
@@ -30,6 +31,8 @@ const login = (user) => (dispatch) => {
     .then((response) => {
       console.log('response: ', response.data);
       dispatch(loginSuccess(response.data));
+      let token = response.data.auth_token;
+      dispatch(bikesList(token));
     })
     .catch((error) => {
       dispatch(loginFail(error.message));
