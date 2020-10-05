@@ -24,7 +24,7 @@ const App = ({ loggedIn }) => {
           <Route path="/signup" component={SignUp} />
           <Route path="/user" component={loggedIn ? UserPage : Login} />
           <Route path="/book" component={loggedIn ? CreateBooking : Login} />
-          <Route path="/" component={loggedIn ? BikeList : Home} />
+          <Route path="/" component={loggedIn ? BikeList : Login} />
         </Switch>
       </div>
     </BrowserRouter>

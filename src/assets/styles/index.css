@@ -1,3 +1,13 @@
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: Russo;
+  src: url(../fonts/Russo_One/RussoOne-Regular.ttf);
+}
+
 html {
   min-height: 100%;
 }
@@ -11,6 +21,7 @@ body {
   background-position: bottom;
   background-color: #95e8f3;
   min-height: 100%;
+  overflow: hidden;
 }
 
 form {
@@ -36,4 +47,22 @@ textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type='email']:not(.browser-default):focus:not([readonly]) + label,
 input[type='password']:not(.browser-default):focus:not([readonly]) + label {
   color: #ec407a !important;
+}
+
+.app {
+  background-image: url(../img/Ducati-Superleggera-V4-Hero.jpg);
+  height: 1600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Russo, Arial, Helvetica, sans-serif;
+  font-size: 1.9em;
+  color: #fff;
+}
+
+h6 {
+  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
 }
