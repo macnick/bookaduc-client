@@ -18,10 +18,10 @@ body {
   font-family: sans-serif;
   background: url(/img/mario-bg.png) no-repeat;
   background-size: 100%;
-  background-position: bottom;
+  background-position: fixed;
   background-color: #95e8f3;
   min-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 form {

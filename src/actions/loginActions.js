@@ -4,6 +4,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
   BASE_URL,
   LOGIN_URL,
 } from './actionTypes';
@@ -39,4 +40,11 @@ const login = (user) => (dispatch) => {
     });
 };
 
-export { login };
+const logout = () => (dispatch) => {
+  alert('Log out');
+  dispatch({
+    type: LOGOUT,
+  });
+};
+
+export { login, logout };
