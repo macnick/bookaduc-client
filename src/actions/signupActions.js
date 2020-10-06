@@ -13,25 +13,25 @@ const signupRequest = () => ({
   loading: true,
 });
 
-const signupSuccess = (data) => ({
+const signupSuccess = data => ({
   type: SIGNUP_SUCCESS,
   payload: data,
 });
 
-const signupFail = (error) => ({
+const signupFail = error => ({
   type: SIGNUP_FAIL,
   payload: error,
 });
 
-const signup = (user) => (dispatch) => {
+const signup = user => dispatch => {
   dispatch(signupRequest());
   axios
     .post(`${BASE_URL}${SIGNUP_URL}`, user)
-    .then((response) => {
+    .then(response => {
       console.log('response: ', response.data);
       dispatch(signupSuccess(response.data));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(signupFail(error.message));
     });
 };

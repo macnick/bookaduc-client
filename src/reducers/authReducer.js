@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
@@ -33,6 +34,7 @@ const authReducer = (state = initState, action) => {
     // case LOGOUT_SUCCESS:
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
+    case LOGOUT:
       return {
         ...state,
         authStatus: false,

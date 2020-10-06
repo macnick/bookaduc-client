@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/loginActions';
+import { bikesList } from '../../actions/bikeActions';
 
 class Login extends Component {
   state = {
@@ -50,6 +51,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(login(user)),
+  // bikesList: (token) => dispatch(bikesList(token))
 });
 
 export default connect(null, mapDispatchToProps)(Login);

@@ -31,7 +31,7 @@ const login = (user) => (dispatch) => {
     .then((response) => {
       console.log('response: ', response.data);
       dispatch(loginSuccess(response.data));
-      let token = response.data.auth_token;
+      const token = response.data.auth_token;
       dispatch(bikesList(token));
     })
     .catch((error) => {

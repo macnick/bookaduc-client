@@ -6,7 +6,7 @@ import SingedInLinks from './SignedInLinks';
 
 class Navbar extends Component {
   render() {
-    const loggedIn = this.props.loggedIn;
+    const { loggedIn } = this.props;
 
     return (
       <nav className="nav-wrapper grey darken-3">
@@ -21,7 +21,7 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedIn: state.auth.authStatus,
 });
 

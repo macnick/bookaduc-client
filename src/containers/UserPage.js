@@ -17,11 +17,9 @@ class UserPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.name,
-    bookings: state.book.bookings,
-  };
-};
+const mapStateToProps = state => ({
+  user: state.name,
+  bookings: state.book.bookings,
+});
 
 export default connect(mapStateToProps, null)(UserPage);
