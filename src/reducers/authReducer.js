@@ -30,8 +30,6 @@ const authReducer = (state = initState, action) => {
         authStatus: true,
         loading: false,
       };
-    // case AUTH_ERROR:
-    // case LOGOUT_SUCCESS:
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
     case LOGOUT:

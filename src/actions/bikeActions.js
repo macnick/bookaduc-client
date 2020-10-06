@@ -47,7 +47,6 @@ const bikesList = (token) => (dispatch) => {
       headers: { Authorization: token },
     })
     .then((response) => {
-      console.log('response: ', response.data);
       dispatch(bikesSuccess(response.data));
     })
     .catch((error) => {

@@ -41,7 +41,6 @@ const login = (user) => (dispatch) => {
 };
 
 const logout = () => (dispatch) => {
-  alert('Log out');
   dispatch({
     type: LOGOUT,
   });

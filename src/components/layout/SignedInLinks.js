@@ -2,10 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../../actions/loginActions';
 
-// const logOut = () => {
-//   dispatch(logout());
-// };
-
 const SingedInLinks = () => (
   <ul className="right">
     <li>
