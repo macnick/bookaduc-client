@@ -30,7 +30,6 @@ const login = (user) => (dispatch) => {
   axios
     .post(`${BASE_URL}${LOGIN_URL}`, user)
     .then((response) => {
-      console.log('response: ', response.data);
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
       dispatch(bikesList(token));

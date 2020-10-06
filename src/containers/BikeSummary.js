@@ -34,7 +34,9 @@ const BikeSummary = ({ bike }) => (
       </p>
     </div>
     <div className="input-field">
-      <button className="btn pink lighten-1 z-depth-1">Book a ride</button>
+      <Link to={`/bikes/${bike.id}`}>
+        <button className="btn pink lighten-1 z-depth-1">Book a ride</button>
+      </Link>
     </div>
   </div>
 );

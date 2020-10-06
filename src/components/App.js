@@ -31,7 +31,7 @@ const App = ({ loggedIn }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loggedIn: state.auth.authStatus,
 });
 
