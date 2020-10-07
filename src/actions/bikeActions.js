@@ -4,9 +4,6 @@ import {
   FETCH_BIKES_REQUEST,
   FETCH_BIKES_SUCCESS,
   FETCH_BIKES_FAIL,
-  GET_BIKE_REQUEST,
-  GET_BIKE_SUCCESS,
-  GET_BIKE_FAIL,
   BASE_URL,
   ALL_BIKES,
 } from './actionTypes';
@@ -19,25 +16,11 @@ const bikesRequest = () => ({
 const bikesSuccess = (data) => ({
   type: FETCH_BIKES_SUCCESS,
   payload: data,
+  loading: false,
 });
 
 const bikesFail = (error) => ({
   type: FETCH_BIKES_FAIL,
-  payload: error,
-});
-
-const bikeRequest = () => ({
-  type: GET_BIKE_REQUEST,
-  loading: true,
-});
-
-const bikeSuccess = (data) => ({
-  type: GET_BIKE_SUCCESS,
-  payload: data,
-});
-
-const bikeFail = (error) => ({
-  type: GET_BIKE_FAIL,
   payload: error,
 });
 

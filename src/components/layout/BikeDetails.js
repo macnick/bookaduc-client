@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { createBooking } from '../../actions/bookingActions';
 
-const BikeDetails = ({ bikes, token }) => {
+const BikeDetails = ({ bikes, token, createBooking }) => {
   const { id } = useParams();
-  const bike = bikes.find((b) => b.id === id) || 1;
+  const bike = bikes.find((b) => b.id === +id) || 1;
 
   const parseJwt = (token) => {
     let base64Url = token.split('.')[1];
@@ -35,6 +36,7 @@ const BikeDetails = ({ bikes, token }) => {
     // let userid = parseJwt(token);
     // console.log('Token: ', userid);
     console.log('submitted:', appointment);
+    createBooking(token, appointment);
   };
 
   return (
@@ -106,4 +108,9 @@ const mapStateToProps = (state) => ({
   token: state.auth.token,
 });
 
-export default connect(mapStateToProps, null)(BikeDetails);
+const mapDispatchToProps = (dispatch) => ({
+  createBooking: (token, appointment) =>
+    dispatch(createBooking(token, appointment)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BikeDetails);

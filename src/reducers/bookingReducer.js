@@ -1,43 +1,31 @@
+import {
+  BASE_URL,
+  BOOK_URL,
+  BOOK_APP_REQUEST,
+  BOOK_APP_SUCCESS,
+  BOOK_APP_FAIL,
+} from '../actions/actionTypes';
+
 const initState = {
-  name: 'macnick',
-  bookings: [
-    {
-      id: 1,
-      city: 'Athens',
-      date: '2020-10-10',
-      bike: {
-        name: 'Panigale V4',
-      },
-    },
-    {
-      id: 2,
-      city: 'Volos',
-      date: '2020-10-11',
-      bike: {
-        name: 'Monster 1200S',
-      },
-    },
-    {
-      id: 3,
-      city: 'Patra',
-      date: '2020-10-12',
-      bike: {
-        name: 'SuperSport',
-      },
-    },
-  ],
+  user_id: '',
+  bookings: [],
 };
 const ADD_BOOKING = 'ADD_BOOKING';
 
 const bookingReducer = (state = initState, action) => {
   switch (action.type) {
-    case ADD_BOOKING:
-      // return {
-      //   ...state,
-      //   loading: true,
-      // };
+    case BOOK_APP_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case BOOK_APP_SUCCESS:
       console.log('booked!', action.bookingDetails);
-      return state;
+      return {
+        ...state,
+        user_id: action.payload.user_id,
+        bookings: [...state.bookings, { city: action.payload.city }],
+      };
     default:
       return state;
   }
