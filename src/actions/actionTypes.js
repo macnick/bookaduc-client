@@ -28,4 +28,4 @@ export const SIGNUP_URL = '/signup';
 export const LOGIN_URL = '/auth/login';
 export const ALL_BIKES = '/api/v1/bikes';
 export const BIKE_INFO = '/api/v1/bikes/';
-export const BOOK_URL = '/api/v1/bookings/new';
+export const BOOK_URL = '/api/v1/bookings';

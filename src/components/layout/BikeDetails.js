@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { createBooking } from '../../actions/bookingActions';
 
 const BikeDetails = ({ bikes, token, createBooking }) => {
   const { id } = useParams();
   const bike = bikes.find((b) => b.id === +id) || 1;
+  const history = useHistory();
 
   const parseJwt = (token) => {
     let base64Url = token.split('.')[1];
@@ -33,10 +34,8 @@ const BikeDetails = ({ bikes, token, createBooking }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // let userid = parseJwt(token);
-    // console.log('Token: ', userid);
-    console.log('submitted:', appointment);
     createBooking(token, appointment);
+    history.push('/bikes');
   };
 
   return (

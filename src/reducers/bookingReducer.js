@@ -1,6 +1,4 @@
 import {
-  BASE_URL,
-  BOOK_URL,
   BOOK_APP_REQUEST,
   BOOK_APP_SUCCESS,
   BOOK_APP_FAIL,
@@ -10,7 +8,6 @@ const initState = {
   user_id: '',
   bookings: [],
 };
-const ADD_BOOKING = 'ADD_BOOKING';
 
 const bookingReducer = (state = initState, action) => {
   switch (action.type) {
@@ -20,11 +17,22 @@ const bookingReducer = (state = initState, action) => {
         loading: true,
       };
     case BOOK_APP_SUCCESS:
-      console.log('booked!', action.bookingDetails);
+      console.log('booked!', action.payload);
       return {
         ...state,
-        user_id: action.payload.user_id,
-        bookings: [...state.bookings, { city: action.payload.city }],
+        user_id: action.payload.user.id,
+        bookings: [
+          ...state.bookings,
+          {
+            city: action.payload.city,
+            date: action.payload.date,
+          },
+        ],
+      };
+    case BOOK_APP_FAIL:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

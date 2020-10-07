@@ -12,11 +12,27 @@ const bookRequest = () => ({
   loading: true,
 });
 
+const bookSuccess = (data) => ({
+  type: BOOK_APP_SUCCESS,
+  loading: false,
+  payload: data,
+});
+
+const bookFail = (error) => ({
+  type: BOOK_APP_FAIL,
+  loading: false,
+  payload: error,
+});
+
 export const createBooking = (token, data) => (dispatch) => {
-  console.log('booking...');
   dispatch(bookRequest());
-  // axios
-  //   .post(`${BASE_URL}${BOOK_URL}`, data, { headers: { Authorization: token } })
-  //   .then((response) => console.log(response))
-  //   .catch((error) => console.log(error));
+  axios
+    .post(`${BASE_URL}${BOOK_URL}`, data, { headers: { Authorization: token } })
+    .then((response) => {
+      dispatch(bookSuccess(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(bookFail(error.message));
+    });
 };
