@@ -42,6 +42,7 @@ const bikeFail = (error) => ({
 });
 
 const bikesList = (token) => (dispatch) => {
+  dispatch(bikesRequest());
   axios
     .get(`${BASE_URL}${ALL_BIKES}`, {
       headers: { Authorization: token },

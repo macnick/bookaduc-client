@@ -1,15 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BikeDetails from '../components/layout/BikeDetails';
-
-const showBike = (id, bike) => {
-  console.log('bike:', bike);
-  // return (
-  //   <Link key={id} to={`/bikes/${id}`}>
-  //     <BikeDetails bike={bike} />
-  //   </Link>
-  // );
-};
 
 const BikeSummary = ({ bike }) => (
   <div className="card z-depth-2" id="">

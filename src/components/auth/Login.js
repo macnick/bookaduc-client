@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/loginActions';
-import { bikesList } from '../../actions/bikeActions';
 
 class Login extends Component {
   state = {

@@ -2,13 +2,28 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-const BikeDetails = ({ bikes }) => {
+const BikeDetails = ({ bikes, token }) => {
   const { id } = useParams();
-  const bike = bikes.find((b) => b.id == id) || 1;
+  const bike = bikes.find((b) => b.id === id) || 1;
+
+  const parseJwt = (token) => {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    let jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+    return JSON.parse(jsonPayload);
+  };
+
   const appointment = {
     city: 'Athens',
     bike_id: id,
-    user_id: 1,
+    user_id: parseJwt(token).user_id,
   };
 
   const handleChange = (e) => {
@@ -17,6 +32,8 @@ const BikeDetails = ({ bikes }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // let userid = parseJwt(token);
+    // console.log('Token: ', userid);
     console.log('submitted:', appointment);
   };
 
@@ -55,9 +72,7 @@ const BikeDetails = ({ bikes }) => {
               className="browser-default"
               onChange={handleChange}
             >
-              <option value="Athens" value="DEFAULT">
-                Athens
-              </option>
+              <option value="DEFAULT">Athens</option>
               <option value="Akkra">Akkra</option>
               <option value="Tashkent">Tashkent</option>
               <option value="Paris">Paris</option>
@@ -88,6 +103,7 @@ const BikeDetails = ({ bikes }) => {
 
 const mapStateToProps = (state) => ({
   bikes: state.bikes.bikes,
+  token: state.auth.token,
 });
 
 export default connect(mapStateToProps, null)(BikeDetails);
