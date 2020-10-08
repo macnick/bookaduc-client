@@ -32,10 +32,10 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
     appointment[e.target.id] = e.target.value;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createBooking(token, appointment);
-    loadUserBookings(token, appointment.userId);
+    await createBooking(token, appointment);
+    await loadUserBookings(token, appointment.user_id);
     history.push('/user');
   };
 
