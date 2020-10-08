@@ -13,7 +13,7 @@ const SingedInLinks = () => (
       </a>
     </li>
     <li>
-      <NavLink to="/" className="btn btn-floating pink lighten-1">
+      <NavLink to="/user" className="btn btn-floating pink lighten-1">
         NH
       </NavLink>
     </li>

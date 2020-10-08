@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { createBooking } from '../../actions/bookingActions';
+import { createBooking, loadUserBookings } from '../../actions/bookingActions';
 
-const BikeDetails = ({ bikes, token, createBooking }) => {
+const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
   const { id } = useParams();
   const bike = bikes.find((b) => b.id === +id) || 1;
   const history = useHistory();
@@ -35,6 +35,8 @@ const BikeDetails = ({ bikes, token, createBooking }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBooking(token, appointment);
+    console.log('id:', id);
+    loadUserBookings(token, id);
     history.push('/user');
   };
 
@@ -110,6 +112,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   createBooking: (token, appointment) =>
     dispatch(createBooking(token, appointment)),
+  loadUserBookings: (token, user) => dispatch(loadUserBookings(token, user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BikeDetails);

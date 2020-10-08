@@ -18,6 +18,7 @@ export const BOOK_APP_SUCCESS = 'BOOK_APP_SUCCESS';
 export const BOOK_APP_FAIL = 'BOOK_APP_FAIL';
 export const GET_BOOKINGS_REQUEST = 'GET_BOOKINGS_REQUEST';
 export const GET_BOOKINGS_SUCCESS = 'GET_BOOKINGS_SUCCESS';
+export const GET_BOOKINGS_FAIL = 'GET_BOOKINGS_FAIL';
 
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
@@ -28,3 +29,4 @@ export const LOGIN_URL = '/auth/login';
 export const ALL_BIKES = '/api/v1/bikes';
 export const BIKE_INFO = '/api/v1/bikes/';
 export const BOOK_URL = '/api/v1/bookings';
+export const USER_URL = '/api/v1/users/';

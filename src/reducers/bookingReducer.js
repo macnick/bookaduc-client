@@ -14,6 +14,7 @@ const initState = {
 const bookingReducer = (state = initState, action) => {
   switch (action.type) {
     case BOOK_APP_REQUEST:
+    case GET_BOOKINGS_REQUEST:
       return {
         ...state,
         loading: true,
@@ -22,6 +23,7 @@ const bookingReducer = (state = initState, action) => {
       console.log('booked!', action.payload);
       return {
         ...state,
+        loading: false,
         user_id: action.payload.user.id,
         bookings: [
           ...state.bookings,
@@ -30,6 +32,11 @@ const bookingReducer = (state = initState, action) => {
             date: action.payload.date,
           },
         ],
+      };
+    case GET_BOOKINGS_SUCCESS:
+      return {
+        ...state,
+        bookings: action.payload.data,
       };
     case BOOK_APP_FAIL:
       return {
