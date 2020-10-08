@@ -3,10 +3,7 @@ import React from 'react';
 const BookingDetails = ({ book }) => (
   <div className="card z-depth-2  ">
     <div className="card-content grey-text text-darken-3">
-      <span className="card-title">
-        Test ride a
-        {book.bike.name}
-      </span>
+      <span className="card-title">Test ride a Ducati</span>
       <p>
         Location:
         {book.city}

@@ -35,7 +35,7 @@ const BikeDetails = ({ bikes, token, createBooking }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBooking(token, appointment);
-    history.push('/bikes');
+    history.push('/user');
   };
 
   return (

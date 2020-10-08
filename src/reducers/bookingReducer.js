@@ -2,6 +2,8 @@ import {
   BOOK_APP_REQUEST,
   BOOK_APP_SUCCESS,
   BOOK_APP_FAIL,
+  GET_BOOKINGS_REQUEST,
+  GET_BOOKINGS_SUCCESS,
 } from '../actions/actionTypes';
 
 const initState = {
