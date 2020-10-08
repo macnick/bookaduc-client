@@ -35,8 +35,7 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createBooking(token, appointment);
-    console.log('id:', id);
-    loadUserBookings(token, id);
+    loadUserBookings(token, appointment.userId);
     history.push('/user');
   };
 
@@ -75,7 +74,7 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
               className="browser-default"
               onChange={handleChange}
             >
-              <option value="DEFAULT">Athens</option>
+              <option value="Athens">Athens</option>
               <option value="Akkra">Akkra</option>
               <option value="Tashkent">Tashkent</option>
               <option value="Paris">Paris</option>

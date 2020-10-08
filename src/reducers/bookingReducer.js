@@ -25,18 +25,13 @@ const bookingReducer = (state = initState, action) => {
         ...state,
         loading: false,
         user_id: action.payload.user.id,
-        bookings: [
-          ...state.bookings,
-          {
-            city: action.payload.city,
-            date: action.payload.date,
-          },
-        ],
+        name: action.payload.user.name,
       };
     case GET_BOOKINGS_SUCCESS:
+      console.log('Get aptmts:', action.payload);
       return {
         ...state,
-        bookings: action.payload.data,
+        bookings: action.payload.bookings,
       };
     case BOOK_APP_FAIL:
       return {

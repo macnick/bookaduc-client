@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { bikesList } from './bikeActions';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -8,7 +8,6 @@ import {
   BASE_URL,
   LOGIN_URL,
 } from './actionTypes';
-import { bikesList } from './bikeActions';
 
 const loginRequest = () => ({
   type: LOGIN_REQUEST,
