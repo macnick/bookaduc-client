@@ -4,9 +4,10 @@ import BookingList from './BookingList';
 
 class UserPage extends Component {
   render() {
-    const { bookings } = this.props;
+    const { user, bookings } = this.props;
     return (
       <div className="user container">
+        Hello {user}
         <div className="row">
           <div>
             <BookingList bookings={bookings} />
@@ -17,8 +18,8 @@ class UserPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.name,
+const mapStateToProps = (state) => ({
+  user: state.book.name,
   bookings: state.book.bookings,
 });
 

@@ -3,8 +3,9 @@ import BookingDetails from './BookingDetails';
 
 const BookingList = ({ bookings }) => (
   <div className="booking-list section">
-    {bookings
-        && bookings.map(book => <BookingDetails book={book} key={book.id} />)}
+    {console.log('Bookings:', bookings)}
+    {bookings &&
+      bookings.map((book) => <BookingDetails book={book} key={book.id} />)}
   </div>
 );
 
