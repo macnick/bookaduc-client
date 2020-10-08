@@ -76,7 +76,6 @@ const loadUserBookings = (token, userId) => (dispatch) => {
 
 const deleteBooking = (token, book_id, user_id) => (dispatch) => {
   dispatch({ type: DELETING_BOOKING });
-  console.log('token', token, 'id', book_id, 'user_id:', user_id);
   axios
     .delete(`${BASE_URL}${BOOK_URL}/${book_id}`, {
       headers: { Authorization: token },

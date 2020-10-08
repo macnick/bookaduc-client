@@ -5,7 +5,6 @@ const BikeSummary = ({ bike }) => (
   <div className="card z-depth-2" id="">
     <div className="card-content grey-text text-darken-4">
       <span className="card-title">{bike.name}</span>
-      <p>Details {bike.id}</p>
       <p className="grey-text">
         Displacement:
         {bike.displacement}

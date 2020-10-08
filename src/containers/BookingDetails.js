@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { deleteBooking, loadUserBookings } from '../actions/bookingActions';
 
 const BookingDetails = ({ book, deleteBooking, token, userId }) => {
+  console.log('Booking Details:', book, userId);
   const handleDelete = (token, bookId, userId) => {
-    console.log('deleteing...', token, bookId, 'useid:', userId);
     deleteBooking(token, bookId, userId);
   };
 
@@ -23,7 +24,14 @@ const BookingDetails = ({ book, deleteBooking, token, userId }) => {
         </button>
       </div>
       <div>
-        <button>Update Booking</button>
+        <Link
+          to={{
+            pathname: `/update/${book.id}`,
+            state: { token, userId, bike: book.bike },
+          }}
+        >
+          <button>Update Booking</button>
+        </Link>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Home from './layout/Home';
 import BikeList from '../containers/BikeList';
 import BikeDetails from './layout/BikeDetails';
 import CreateBooking from '../containers/CreateBooking';
+import EditBooking from '../components/layout/EditBooking';
 import Login from './auth/Login';
 import SignUp from './auth/SignUp';
 import UserPage from '../containers/UserPage';
@@ -24,6 +25,10 @@ const App = ({ loggedIn }) => {
           <Route path="/signup" component={SignUp} />
           <Route path="/user" component={loggedIn ? UserPage : Login} />
           <Route path="/book" component={loggedIn ? CreateBooking : Login} />
+          <Route
+            path="/update/:id"
+            component={loggedIn ? EditBooking : Login}
+          />
           <Route path="/" component={loggedIn ? BikeList : Login} />
         </Switch>
       </div>
