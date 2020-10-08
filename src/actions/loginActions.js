@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { bikesList } from './bikeActions';
+import { loadUserBookings } from './bookingActions';
+import parseJwt from '../helpers/parseJWT';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -31,7 +33,9 @@ const login = (user) => (dispatch) => {
     .then((response) => {
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
+      let userId = parseJwt(token).user_id;
       dispatch(bikesList(token));
+      dispatch(loadUserBookings(token, userId));
     })
     .catch((error) => {
       dispatch(loginFail(error.message));

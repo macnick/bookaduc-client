@@ -32,6 +32,7 @@ const bookingReducer = (state = initState, action) => {
       return {
         ...state,
         bookings: action.payload.bookings,
+        name: action.payload.name,
       };
     case BOOK_APP_FAIL:
       return {
