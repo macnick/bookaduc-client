@@ -2,25 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { createBooking, loadUserBookings } from '../../actions/bookingActions';
+import parseJwt from '../../helpers/parseJWT';
 
 const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
   const { id } = useParams();
   const bike = bikes.find((b) => b.id === +id) || 1;
   const history = useHistory();
-
-  const parseJwt = (token) => {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split('')
-        .map(function (c) {
-          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join('')
-    );
-    return JSON.parse(jsonPayload);
-  };
 
   const appointment = {
     city: 'Athens',
@@ -32,10 +19,9 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
     appointment[e.target.id] = e.target.value;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await createBooking(token, appointment);
-    await loadUserBookings(token, appointment.user_id);
+    createBooking(token, appointment);
     history.push('/user');
   };
 

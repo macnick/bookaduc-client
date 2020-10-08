@@ -4,6 +4,8 @@ import {
   BOOK_APP_FAIL,
   GET_BOOKINGS_REQUEST,
   GET_BOOKINGS_SUCCESS,
+  DELETING_BOOKING,
+  BOOKING_DELETED,
 } from '../actions/actionTypes';
 
 const initState = {
@@ -15,12 +17,12 @@ const bookingReducer = (state = initState, action) => {
   switch (action.type) {
     case BOOK_APP_REQUEST:
     case GET_BOOKINGS_REQUEST:
+    case DELETING_BOOKING:
       return {
         ...state,
         loading: true,
       };
     case BOOK_APP_SUCCESS:
-      console.log('booked!', action.payload);
       return {
         ...state,
         loading: false,
@@ -31,13 +33,20 @@ const bookingReducer = (state = initState, action) => {
       console.log('Get aptmts:', action.payload);
       return {
         ...state,
+        loading: false,
         bookings: action.payload.bookings,
         name: action.payload.name,
+        user_id: action.payload.id,
       };
     case BOOK_APP_FAIL:
       return {
         ...state,
         error: action.payload,
+      };
+    case BOOKING_DELETED:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
