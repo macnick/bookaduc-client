@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { createBooking, loadUserBookings } from '../../actions/bookingActions';
-import parseJwt from '../../helpers/parseJWT';
+import { updateBooking } from '../../actions/bookingActions';
 
-const EditBooking = ({ token, createBooking, bookings, bikes, user_id }) => {
+const EditBooking = ({ token, updateBooking, bookings, bikes, user_id }) => {
   const { id } = useParams();
   const book = bookings.find((b) => b.id === +id) || 1;
   const bike = bikes.find((b) => b.id === book.bike.id);
@@ -14,8 +13,9 @@ const EditBooking = ({ token, createBooking, bookings, bikes, user_id }) => {
 
   const appointment = {
     city: 'Athens',
-    bike_id: id,
-    user_id: parseJwt(token).user_id,
+    bike_id: bike.id,
+    user_id: user_id,
+    book_id: id,
   };
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const EditBooking = ({ token, createBooking, bookings, bikes, user_id }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBooking(token, appointment);
+    updateBooking(token, appointment);
     history.push('/user');
   };
 
@@ -34,7 +34,6 @@ const EditBooking = ({ token, createBooking, bookings, bikes, user_id }) => {
         <div className="card-content grey-text text-darken-4">
           <span className="card-title">Ducati {bike.name}</span>
           <div className="card-action grey lighten-4 grey-text">
-            <p>Details {bike.id}</p>
             <p className="grey-text">
               Displacement:
               {bike.displacement}
@@ -84,7 +83,9 @@ const EditBooking = ({ token, createBooking, bookings, bikes, user_id }) => {
             </div>
           </label>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-1">Book Ride</button>
+            <button className="btn pink lighten-1 z-depth-1">
+              Update Booking
+            </button>
           </div>
         </form>
       </div>
@@ -100,8 +101,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  createBooking: (token, appointment) =>
-    dispatch(createBooking(token, appointment)),
+  updateBooking: (token, appointment) =>
+    dispatch(updateBooking(token, appointment)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditBooking);

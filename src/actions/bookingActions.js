@@ -60,6 +60,26 @@ const createBooking = (token, data) => (dispatch) => {
     });
 };
 
+const updateBooking = (token, data) => (dispatch) => {
+  dispatch({ type: 'UPDATE_REQUEST' });
+  let book_id = data.book_id;
+  delete data.book_id;
+  console.log('data:', data);
+  axios
+    .patch(`${BASE_URL}${BOOK_URL}/${book_id}`, data, {
+      headers: { Authorization: token },
+    })
+    .then((response) => {
+      if (response.data.status === 'patched') {
+        dispatch({ type: 'BOOKING_UPDATE_SUCCESS' });
+      }
+      dispatch(loadUserBookings(token, data.user_id));
+    })
+    .catch((error) => {
+      dispatch(bookFail(error.message));
+    });
+};
+
 const loadUserBookings = (token, userId) => (dispatch) => {
   dispatch(bookingsRequest);
   axios
@@ -87,4 +107,4 @@ const deleteBooking = (token, book_id, user_id) => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export { createBooking, loadUserBookings, deleteBooking };
+export { createBooking, loadUserBookings, deleteBooking, updateBooking };
