@@ -16,33 +16,33 @@ const loginRequest = () => ({
   loading: true,
 });
 
-const loginSuccess = (data) => ({
+const loginSuccess = data => ({
   type: LOGIN_SUCCESS,
   payload: data,
 });
 
-const loginFail = (error) => ({
+const loginFail = error => ({
   type: LOGIN_FAIL,
   payload: error,
 });
 
-const login = (user) => (dispatch) => {
+const login = user => dispatch => {
   dispatch(loginRequest());
   axios
     .post(`${BASE_URL}${LOGIN_URL}`, user)
-    .then((response) => {
+    .then(response => {
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
-      let userId = parseJwt(token).user_id;
+      const userId = parseJwt(token).user_id;
       dispatch(bikesList(token));
       dispatch(loadUserBookings(token, userId));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(loginFail(error.message));
     });
 };
 
-const logout = () => (dispatch) => {
+const logout = () => dispatch => {
   dispatch({
     type: LOGOUT,
   });

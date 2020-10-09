@@ -13,27 +13,27 @@ const bikesRequest = () => ({
   loading: true,
 });
 
-const bikesSuccess = (data) => ({
+const bikesSuccess = data => ({
   type: FETCH_BIKES_SUCCESS,
   payload: data,
   loading: false,
 });
 
-const bikesFail = (error) => ({
+const bikesFail = error => ({
   type: FETCH_BIKES_FAIL,
   payload: error,
 });
 
-const bikesList = (token) => (dispatch) => {
+const bikesList = token => dispatch => {
   dispatch(bikesRequest());
   axios
     .get(`${BASE_URL}${ALL_BIKES}`, {
       headers: { Authorization: token },
     })
-    .then((response) => {
+    .then(response => {
       dispatch(bikesSuccess(response.data));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(bikesFail(error.message));
     });
 };

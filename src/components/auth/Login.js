@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/loginActions';
 
-const Login = ({ login, bookings }) => {
+const Login = ({ login }) => {
   const history = useHistory();
 
   const state = {
@@ -11,14 +11,13 @@ const Login = ({ login, bookings }) => {
     password: '',
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    await login(state);
-    console.log(bookings);
-    bookings.length === 0 ? history.push('/bikes') : history.push('/user');
+    login(state);
+    history.push('/bikes');
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     state[e.target.id] = e.target.value;
   };
 
@@ -44,12 +43,12 @@ const Login = ({ login, bookings }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  bookings: state.book.bookings,
+// const mapStateToProps = (state) => ({
+//   bookings: state.book.bookings,
+// });
+
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(login(user)),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  login: (user) => dispatch(login(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

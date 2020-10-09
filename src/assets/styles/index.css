@@ -16,8 +16,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: url(/img/mario-bg.png) no-repeat;
-  background-size: 100%;
+  background: url(../img/Ducati-Superleggera-V4-Hero.jpg) no-repeat;
+  background-size: cover;
   background-position: fixed;
   background-color: #95e8f3;
   min-height: 100%;
@@ -50,12 +50,6 @@ input[type='password']:not(.browser-default):focus:not([readonly]) + label {
 }
 
 .app {
-  background-image: url(../img/Ducati-Superleggera-V4-Hero.jpg);
-  height: 1600px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   font-family: Russo, Arial, Helvetica, sans-serif;
   font-size: 1.9em;
   color: #fff;

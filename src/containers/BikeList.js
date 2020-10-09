@@ -2,15 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BikeSummary from './BikeSummary';
 
-const BikeList = ({ bikes }) => {
-  return (
-    <div className="dashboard container">
-      {bikes && bikes.map((bike) => <BikeSummary bike={bike} key={bike.id} />)}
-    </div>
-  );
-};
+const BikeList = ({ bikes }) => (
+  <div className="dashboard container">
+    {bikes && bikes.map(bike => <BikeSummary bike={bike} key={bike.id} />)}
+  </div>
+);
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   bikes: state.bikes.bikes,
 });
 

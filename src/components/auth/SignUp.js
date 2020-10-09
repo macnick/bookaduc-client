@@ -13,13 +13,13 @@ const SignUp = ({ signup }) => {
     msg: '',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     signup(state);
     history.push('/bikes');
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     state[e.target.id] = e.target.value;
   };
 
@@ -49,8 +49,8 @@ const SignUp = ({ signup }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  signup: (user) => dispatch(signup(user)),
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(signup(user)),
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);

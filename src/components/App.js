@@ -7,7 +7,7 @@ import Home from './layout/Home';
 import BikeList from '../containers/BikeList';
 import BikeDetails from './layout/BikeDetails';
 import CreateBooking from '../containers/CreateBooking';
-import EditBooking from '../components/layout/EditBooking';
+import EditBooking from './layout/EditBooking';
 import Login from './auth/Login';
 import SignUp from './auth/SignUp';
 import UserPage from '../containers/UserPage';
@@ -36,7 +36,7 @@ const App = ({ loggedIn }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedIn: state.auth.authStatus,
 });
 

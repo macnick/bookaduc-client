@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { updateBooking } from '../../actions/bookingActions';
 
-const EditBooking = ({ token, updateBooking, bookings, bikes, user_id }) => {
+const EditBooking = ({
+  token, updateBooking, bookings, bikes, user_id,
+}) => {
   const { id } = useParams();
-  const book = bookings.find((b) => b.id === +id) || 1;
-  const bike = bikes.find((b) => b.id === book.bike.id);
+  const book = bookings.find(b => b.id === +id) || 1;
+  const bike = bikes.find(b => b.id === book.bike.id);
   const history = useHistory();
 
   console.log('edit booking id: ', id, 'bike:', bike, 'userId:', user_id);
@@ -14,15 +16,15 @@ const EditBooking = ({ token, updateBooking, bookings, bikes, user_id }) => {
   const appointment = {
     city: 'Athens',
     bike_id: bike.id,
-    user_id: user_id,
+    user_id,
     book_id: id,
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     appointment[e.target.id] = e.target.value;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     updateBooking(token, appointment);
     history.push('/user');
@@ -32,7 +34,10 @@ const EditBooking = ({ token, updateBooking, bookings, bikes, user_id }) => {
     <div className="container section bike-details">
       <div className="card z-depth-2">
         <div className="card-content grey-text text-darken-4">
-          <span className="card-title">Ducati {bike.name}</span>
+          <span className="card-title">
+            Ducati
+            {bike.name}
+          </span>
           <div className="card-action grey lighten-4 grey-text">
             <p className="grey-text">
               Displacement:
@@ -93,16 +98,15 @@ const EditBooking = ({ token, updateBooking, bookings, bikes, user_id }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user_id: state.book.user_id,
   bookings: state.book.bookings,
   token: state.auth.token,
   bikes: state.bikes.bikes,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateBooking: (token, appointment) =>
-    dispatch(updateBooking(token, appointment)),
+const mapDispatchToProps = dispatch => ({
+  updateBooking: (token, appointment) => dispatch(updateBooking(token, appointment)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditBooking);

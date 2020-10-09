@@ -7,7 +7,9 @@ class UserPage extends Component {
     const { user, bookings } = this.props;
     return (
       <div className="user container">
-        Hello {user}
+        Hello
+        {' '}
+        {user}
         <div className="row">
           <div>
             <BookingList bookings={bookings} />
@@ -18,7 +20,7 @@ class UserPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.book.name,
   bookings: state.book.bookings,
 });

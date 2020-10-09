@@ -11,20 +11,20 @@ import {
   GET_BOOKINGS_FAIL,
   DELETING_BOOKING,
   BOOKING_DELETED,
-} from '../actions/actionTypes';
+} from './actionTypes';
 
 const bookRequest = () => ({
   type: BOOK_APP_REQUEST,
   loading: true,
 });
 
-const bookSuccess = (data) => ({
+const bookSuccess = data => ({
   type: BOOK_APP_SUCCESS,
   loading: false,
   payload: data,
 });
 
-const bookFail = (error) => ({
+const bookFail = error => ({
   type: BOOK_APP_FAIL,
   loading: false,
   payload: error,
@@ -35,76 +35,78 @@ const bookingsRequest = () => ({
   loading: true,
 });
 
-const bookingsSuccess = (data) => ({
+const bookingsSuccess = data => ({
   type: GET_BOOKINGS_SUCCESS,
   loading: false,
   payload: data,
 });
 
-const bookingsFail = (error) => ({
+const bookingsFail = error => ({
   type: GET_BOOKINGS_FAIL,
   loading: false,
   payload: error,
 });
 
-const createBooking = (token, data) => (dispatch) => {
+const createBooking = (token, data) => dispatch => {
   dispatch(bookRequest());
   axios
     .post(`${BASE_URL}${BOOK_URL}`, data, { headers: { Authorization: token } })
-    .then((response) => {
+    .then(response => {
       dispatch(bookSuccess(response.data));
       dispatch(loadUserBookings(token, data.user_id));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(bookFail(error.message));
     });
 };
 
-const updateBooking = (token, data) => (dispatch) => {
+const updateBooking = (token, data) => dispatch => {
   dispatch({ type: 'UPDATE_REQUEST' });
-  let book_id = data.book_id;
+  const { book_id } = data;
   delete data.book_id;
   console.log('data:', data);
   axios
     .patch(`${BASE_URL}${BOOK_URL}/${book_id}`, data, {
       headers: { Authorization: token },
     })
-    .then((response) => {
+    .then(response => {
       if (response.data.status === 'patched') {
         dispatch({ type: 'BOOKING_UPDATE_SUCCESS' });
       }
       dispatch(loadUserBookings(token, data.user_id));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(bookFail(error.message));
     });
 };
 
-const loadUserBookings = (token, userId) => (dispatch) => {
+const loadUserBookings = (token, userId) => dispatch => {
   dispatch(bookingsRequest);
   axios
     .get(`${BASE_URL}${USER_URL}${userId}`, {
       headers: { Authorization: token },
     })
-    .then((response) => {
+    .then(response => {
       dispatch(bookingsSuccess(response.data));
     })
-    .catch((error) => {
+    .catch(error => {
       dispatch(bookingsFail(error));
     });
 };
 
-const deleteBooking = (token, book_id, user_id) => (dispatch) => {
+const deleteBooking = (token, book_id, user_id) => dispatch => {
   dispatch({ type: DELETING_BOOKING });
   axios
     .delete(`${BASE_URL}${BOOK_URL}/${book_id}`, {
       headers: { Authorization: token },
     })
-    .then((response) => {
+    .then(response => {
       dispatch({ type: BOOKING_DELETED });
       dispatch(loadUserBookings(token, user_id));
     })
-    .catch((error) => console.log(error));
+    .catch(error => console.log(error));
 };
 
-export { createBooking, loadUserBookings, deleteBooking, updateBooking };
+export {
+  createBooking, loadUserBookings, deleteBooking, updateBooking,
+};

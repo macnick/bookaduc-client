@@ -30,7 +30,6 @@ const bookingReducer = (state = initState, action) => {
         name: action.payload.user.name,
       };
     case GET_BOOKINGS_SUCCESS:
-      console.log('Get aptmts:', action.payload);
       return {
         ...state,
         loading: false,
