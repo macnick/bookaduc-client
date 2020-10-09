@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoggedOutLinks from './LoggedOutLinks';
 import SingedInLinks from './SignedInLinks';
 
 class Navbar extends Component {
   render() {
-    const { loggedIn } = this.props;
+    const { loggedIn, name } = this.props;
 
     return (
-      <nav className="nav-wrapper grey darken-3">
-        <div className="container">
-          <Link to="/" className="brand-logo">
-            Book-A-Duc
-          </Link>
-          {loggedIn ? <SingedInLinks /> : <LoggedOutLinks />}
+      <div className="container section">
+        <ul id="menu-side" className="sidenav right">
+          {loggedIn ? <SingedInLinks name={name} /> : <LoggedOutLinks />}
+        </ul>
+        <div
+          type="button"
+          href="#"
+          className="sidenav-trigger"
+          data-target="menu-side"
+        >
+          <i className="material-icons">menu</i>
         </div>
-      </nav>
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loggedIn: state.auth.authStatus,
+  name: state.book.name,
 });
 
 export default connect(mapStateToProps, null)(Navbar);
