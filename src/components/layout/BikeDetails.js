@@ -81,7 +81,7 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
               </div>
             </label>
             <div className="input-field">
-              <button className="btn red lighten-1 z-depth-1">Book Ride</button>
+              <button className="btn red darken-3 z-depth-1">Book Ride</button>
             </div>
           </form>
         </div>

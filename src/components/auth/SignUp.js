@@ -40,7 +40,7 @@ const SignUp = ({ signup }) => {
           <input type="password" id="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <button className="btn red lighten-1 z-depth-1">Sign Up</button>
+          <button className="btn red darken-3 z-depth-1">Sign Up</button>
         </div>
         <p className="grey-text">
           Already a user?

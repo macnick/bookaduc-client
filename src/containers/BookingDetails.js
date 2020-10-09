@@ -3,35 +3,34 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteBooking, loadUserBookings } from '../actions/bookingActions';
 
-const BookingDetails = ({
-  book, deleteBooking, token, userId,
-}) => {
+const BookingDetails = ({ book, deleteBooking, token, userId }) => {
   console.log('Booking Details:', book, userId);
   const handleDelete = (token, bookId, userId) => {
     deleteBooking(token, bookId, userId);
   };
 
   return (
-    <div className="card z-depth-2  ">
+    <div className="card-panel horizontal z-depth-2  ">
       <div className="card-content grey-text text-darken-3">
-        <span className="card-title">
-          Test ride a
-          {book.bike.name}
-        </span>
-        <p>
+        <span className="card-title">Test ride a{' ' + book.bike.name}</span>
+        <h6>
           Location:
-          {book.city}
-        </p>
-        <p className="grey-text">
+          {' ' + book.city}
+        </h6>
+        <h6>
           Date:
-          {book.date}
-        </p>
+          {' ' + book.date}
+        </h6>
       </div>
-      <div>
-        <button onClick={() => handleDelete(token, book.id, userId)}>
-          Cancel Booking
-        </button>
-      </div>
+
+      {/* <div> */}
+      <button
+        onClick={() => handleDelete(token, book.id, userId)}
+        className="btn red darken-3 z-depth-2  user-btn"
+      >
+        Cancel Booking
+      </button>
+      {/* </div> */}
       <div>
         <Link
           to={{
@@ -39,20 +38,23 @@ const BookingDetails = ({
             state: { token, userId, bike: book.bike },
           }}
         >
-          <button>Update Booking</button>
+          <button className="btn green darken-2 z-depth-2 user-btn">
+            Update Booking
+          </button>
         </Link>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token: state.auth.token,
   userId: state.book.user_id,
 });
 
-const mapDispatchToProps = dispatch => ({
-  deleteBooking: (token, id, user_id) => dispatch(deleteBooking(token, id, user_id)),
+const mapDispatchToProps = (dispatch) => ({
+  deleteBooking: (token, id, user_id) =>
+    dispatch(deleteBooking(token, id, user_id)),
   loadUserBookings: (token, id) => dispatch(loadUserBookings(token, id)),
 });
 

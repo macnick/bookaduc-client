@@ -34,7 +34,7 @@ const Login = ({ login }) => {
           <input type="password" id="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <button className="btn red lighten-1 z-depth-1">Login</button>
+          <button className="btn red darken-3 z-depth-1">Login</button>
         </div>
         <p className="grey-text">
           Don't have an account?

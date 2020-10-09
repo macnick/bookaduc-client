@@ -70,5 +70,9 @@ p {
 }
 
 .card-image {
-  background-color: #111;
+  background-color: #161616;
+}
+
+.user-btn {
+  width: 260px;
 }
