@@ -13,13 +13,13 @@ const SignUp = ({ signup }) => {
     msg: '',
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     signup(state);
     history.push('/bikes');
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     state[e.target.id] = e.target.value;
   };
 
@@ -40,17 +40,19 @@ const SignUp = ({ signup }) => {
           <input type="password" id="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <button className="btn pink lighten-1 z-depth-1">Sign Up</button>
+          <button className="btn red lighten-1 z-depth-1">Sign Up</button>
         </div>
-        <p className="grey-text">Already a user?</p>
-        <Link to="/login">Login</Link>
+        <p className="grey-text">
+          Already a user?
+          <Link to="/login">{' Login'}</Link>
+        </p>
       </form>
     </div>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  signup: user => dispatch(signup(user)),
+const mapDispatchToProps = (dispatch) => ({
+  signup: (user) => dispatch(signup(user)),
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);

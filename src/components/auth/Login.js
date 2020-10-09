@@ -11,13 +11,13 @@ const Login = ({ login }) => {
     password: '',
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     login(state);
     history.push('/bikes');
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     state[e.target.id] = e.target.value;
   };
 
@@ -34,10 +34,12 @@ const Login = ({ login }) => {
           <input type="password" id="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <button className="btn pink lighten-1 z-depth-1">Login</button>
+          <button className="btn red lighten-1 z-depth-1">Login</button>
         </div>
-        <p className="grey-text">Don't have an account?</p>
-        <Link to="/signup">Signup</Link>
+        <p className="grey-text">
+          Don't have an account?
+          <Link to="/signup">{' Signup'}</Link>
+        </p>
       </form>
     </div>
   );
@@ -47,8 +49,8 @@ const Login = ({ login }) => {
 //   bookings: state.book.bookings,
 // });
 
-const mapDispatchToProps = dispatch => ({
-  login: user => dispatch(login(user)),
+const mapDispatchToProps = (dispatch) => ({
+  login: (user) => dispatch(login(user)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

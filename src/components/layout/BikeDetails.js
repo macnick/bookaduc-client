@@ -4,11 +4,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import { createBooking, loadUserBookings } from '../../actions/bookingActions';
 import parseJwt from '../../helpers/parseJWT';
 
-const BikeDetails = ({
-  bikes, token, createBooking, loadUserBookings,
-}) => {
+const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
   const { id } = useParams();
-  const bike = bikes.find(b => b.id === +id) || 1;
+  const bike = bikes.find((b) => b.id === +id) || 1;
   const history = useHistory();
 
   const appointment = {
@@ -17,11 +15,11 @@ const BikeDetails = ({
     user_id: parseJwt(token).user_id,
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     appointment[e.target.id] = e.target.value;
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     createBooking(token, appointment);
     history.push('/user');
@@ -30,80 +28,76 @@ const BikeDetails = ({
   return (
     <div className="container section bike-details">
       <div className="card z-depth-2">
+        <div className="card-image">
+          <img src={bike.image} alt={bike.name} style={{ width: '100%' }} />
+        </div>
         <div className="card-content grey-text text-darken-4">
-          <span className="card-title">
-            Ducati
-            {bike.name}
-          </span>
+          <span className="card-title">{bike.name}</span>
           <div className="card-action grey lighten-4 grey-text">
-            <p>
-              Details
-              {bike.id}
-            </p>
             <p className="grey-text">
               Displacement:
-              {bike.displacement}
+              {' ' + bike.displacement}
             </p>
             <p className="grey-text">
               Power:
-              {bike.power}
+              {' ' + bike.power}
             </p>
             <p className="grey-text">
               Torque:
-              {bike.torque}
+              {' ' + bike.torque}
             </p>
             <p className="grey-text">
               Weight:
-              {bike.weight}
+              {' ' + bike.weight}
             </p>
           </div>
-        </div>
-        <form onSubmit={handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Book a Ride</h5>
-          <label htmlFor="city">Select a City</label>
-          <div className="input-field col s12">
-            <select
-              name="city"
-              id="city"
-              className="browser-default"
-              onChange={handleChange}
-            >
-              <option value="Athens">Athens</option>
-              <option value="Akkra">Akkra</option>
-              <option value="Tashkent">Tashkent</option>
-              <option value="Paris">Paris</option>
-              <option value="Rome">Rome</option>
-              <option value="London">London</option>
-            </select>
-          </div>
-
-          <label htmlFor="date">
-            Pick a date
-            <div className="pick-date">
-              <input
-                type="date"
-                name="date"
-                id="date"
+          <form onSubmit={handleSubmit} className="red book-form">
+            <label htmlFor="city">Select a City</label>
+            <div className="input-field col s12">
+              <select
+                name="city"
+                id="city"
+                className="browser-default"
                 onChange={handleChange}
-              />
+              >
+                <option value="Athens">Athens</option>
+                <option value="Akkra">Akkra</option>
+                <option value="Tashkent">Tashkent</option>
+                <option value="Paris">Paris</option>
+                <option value="Rome">Rome</option>
+                <option value="London">London</option>
+              </select>
             </div>
-          </label>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-1">Book Ride</button>
-          </div>
-        </form>
+
+            <label htmlFor="date">
+              Pick a date
+              <div className="pick-date">
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={handleChange}
+                />
+              </div>
+            </label>
+            <div className="input-field">
+              <button className="btn red lighten-1 z-depth-1">Book Ride</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   bikes: state.bikes.bikes,
   token: state.auth.token,
 });
 
-const mapDispatchToProps = dispatch => ({
-  createBooking: (token, appointment) => dispatch(createBooking(token, appointment)),
+const mapDispatchToProps = (dispatch) => ({
+  createBooking: (token, appointment) =>
+    dispatch(createBooking(token, appointment)),
   loadUserBookings: (token, user) => dispatch(loadUserBookings(token, user)),
 });
 

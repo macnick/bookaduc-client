@@ -60,3 +60,15 @@ h6 {
   font-size: 1.1em;
   line-height: 1.5em;
 }
+
+p {
+  font-size: 0.5em;
+}
+
+.book-form {
+  margin-top: 20px;
+}
+
+.card-image {
+  background-color: #111;
+}
