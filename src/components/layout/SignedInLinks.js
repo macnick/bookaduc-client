@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../../actions/loginActions';
 
@@ -24,5 +25,9 @@ const SingedInLinks = ({ name }) => (
     </li>
   </>
 );
+
+SingedInLinks.propTypes = {
+  name: PropTypes.string.isRequired,
+};
 
 export default SingedInLinks;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import PropTypes, { object } from 'prop-types';
 import { updateBooking } from '../../actions/bookingActions';
 
 const EditBooking = ({
@@ -86,7 +87,7 @@ const EditBooking = ({
               </div>
             </label>
             <div className="input-field">
-              <button className="btn red darken-3 z-depth-1">
+              <button className="btn red darken-3 z-depth-1" type="submit">
                 Update Booking
               </button>
             </div>
@@ -107,5 +108,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateBooking: (token, appointment) => dispatch(updateBooking(token, appointment)),
 });
+
+EditBooking.propTypes = {
+  token: PropTypes.string.isRequired,
+  updateBooking: PropTypes.func.isRequired,
+  bookings: PropTypes.arrayOf(objects).isRequired,
+  bikes: PropTypes.arrayOf(objects).isRequired,
+  user_id: PropTypes.number.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditBooking);

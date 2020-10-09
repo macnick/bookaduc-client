@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import BikeSummary from './BikeSummary';
 
 const BikeList = ({ bikes }) => (
@@ -11,5 +12,9 @@ const BikeList = ({ bikes }) => (
 const mapStateToProps = state => ({
   bikes: state.bikes.bikes,
 });
+
+BikeList.propTypes = {
+  bikes: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default connect(mapStateToProps, null)(BikeList);
