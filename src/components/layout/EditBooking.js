@@ -33,66 +33,65 @@ const EditBooking = ({
   return (
     <div className="container section bike-details">
       <div className="card z-depth-2">
+        <div className="card-image">
+          <img src={bike.image} alt={bike.name} style={{ width: '100%' }} />
+        </div>
         <div className="card-content grey-text text-darken-4">
-          <span className="card-title">
-            Ducati
-            {bike.name}
-          </span>
+          <span className="card-title">{bike.name}</span>
           <div className="card-action grey lighten-4 grey-text">
             <p className="grey-text">
               Displacement:
-              {bike.displacement}
+              {` ${bike.displacement}`}
             </p>
             <p className="grey-text">
               Power:
-              {bike.power}
+              {` ${bike.power}`}
             </p>
             <p className="grey-text">
               Torque:
-              {bike.torque}
+              {` ${bike.torque}`}
             </p>
             <p className="grey-text">
               Weight:
-              {bike.weight}
+              {` ${bike.weight}`}
             </p>
           </div>
-        </div>
-        <form onSubmit={handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Book a Ride</h5>
-          <label htmlFor="city">Select a City</label>
-          <div className="input-field col s12">
-            <select
-              name="city"
-              id="city"
-              className="browser-default"
-              onChange={handleChange}
-            >
-              <option value="Athens">Athens</option>
-              <option value="Akkra">Akkra</option>
-              <option value="Tashkent">Tashkent</option>
-              <option value="Paris">Paris</option>
-              <option value="Rome">Rome</option>
-              <option value="London">London</option>
-            </select>
-          </div>
-
-          <label htmlFor="date">
-            Pick a date
-            <div className="pick-date">
-              <input
-                type="date"
-                name="date"
-                id="date"
+          <form onSubmit={handleSubmit} className="white book-form">
+            <label htmlFor="city">Select a City</label>
+            <div className="input-field col s12">
+              <select
+                name="city"
+                id="city"
+                className="browser-default"
                 onChange={handleChange}
-              />
+              >
+                <option value="Athens">Athens</option>
+                <option value="Akkra">Akkra</option>
+                <option value="Tashkent">Tashkent</option>
+                <option value="Paris">Paris</option>
+                <option value="Rome">Rome</option>
+                <option value="London">London</option>
+              </select>
             </div>
-          </label>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-1">
-              Update Booking
-            </button>
-          </div>
-        </form>
+
+            <label htmlFor="date">
+              Pick a date
+              <div className="pick-date">
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={handleChange}
+                />
+              </div>
+            </label>
+            <div className="input-field">
+              <button className="btn red darken-3 z-depth-1">
+                Update Booking
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

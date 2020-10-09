@@ -25,7 +25,7 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedIn: state.auth.authStatus,
   name: state.book.name,
 });

@@ -4,9 +4,11 @@ import { useParams, useHistory } from 'react-router-dom';
 import { createBooking, loadUserBookings } from '../../actions/bookingActions';
 import parseJwt from '../../helpers/parseJWT';
 
-const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
+const BikeDetails = ({
+  bikes, token, createBooking, loadUserBookings,
+}) => {
   const { id } = useParams();
-  const bike = bikes.find((b) => b.id === +id) || 1;
+  const bike = bikes.find(b => b.id === +id) || 1;
   const history = useHistory();
 
   const appointment = {
@@ -15,11 +17,11 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
     user_id: parseJwt(token).user_id,
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     appointment[e.target.id] = e.target.value;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     createBooking(token, appointment);
     history.push('/user');
@@ -36,19 +38,19 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
           <div className="card-action grey lighten-4 grey-text">
             <p className="grey-text">
               Displacement:
-              {' ' + bike.displacement}
+              {` ${bike.displacement}`}
             </p>
             <p className="grey-text">
               Power:
-              {' ' + bike.power}
+              {` ${bike.power}`}
             </p>
             <p className="grey-text">
               Torque:
-              {' ' + bike.torque}
+              {` ${bike.torque}`}
             </p>
             <p className="grey-text">
               Weight:
-              {' ' + bike.weight}
+              {` ${bike.weight}`}
             </p>
           </div>
           <form onSubmit={handleSubmit} className="red book-form">
@@ -90,14 +92,13 @@ const BikeDetails = ({ bikes, token, createBooking, loadUserBookings }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   bikes: state.bikes.bikes,
   token: state.auth.token,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  createBooking: (token, appointment) =>
-    dispatch(createBooking(token, appointment)),
+const mapDispatchToProps = dispatch => ({
+  createBooking: (token, appointment) => dispatch(createBooking(token, appointment)),
   loadUserBookings: (token, user) => dispatch(loadUserBookings(token, user)),
 });
 

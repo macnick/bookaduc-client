@@ -10,19 +10,19 @@ const BikeSummary = ({ bike }) => (
       <span className="card-title">{bike.name}</span>
       <p className="grey-text">
         Displacement:
-        {' ' + bike.displacement}
+        {` ${bike.displacement}`}
       </p>
       <p className="grey-text">
         Power:
-        {' ' + bike.power}
+        {` ${bike.power}`}
       </p>
       <p className="grey-text">
         Torque:
-        {' ' + bike.torque}
+        {` ${bike.torque}`}
       </p>
       <p className="grey-text">
         Weight:
-        {' ' + bike.weight}
+        {` ${bike.weight}`}
       </p>
       <div className="input-field">
         <Link to={`/bikes/${bike.id}`}>

@@ -11,13 +11,13 @@ const Login = ({ login }) => {
     password: '',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     login(state);
     history.push('/bikes');
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     state[e.target.id] = e.target.value;
   };
 
@@ -45,12 +45,8 @@ const Login = ({ login }) => {
   );
 };
 
-// const mapStateToProps = (state) => ({
-//   bookings: state.book.bookings,
-// });
-
-const mapDispatchToProps = (dispatch) => ({
-  login: (user) => dispatch(login(user)),
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(login(user)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);
