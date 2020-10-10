@@ -52,7 +52,7 @@
 
 //   it('should render the Header', () => {
 //     const { getByText } = render(<Header />);
-//     expect(getByText(/MotoGP Team Info/)).toBeInTheDocument();
+//     expect(getByText(/Book A Ducati/)).toBeInTheDocument();
 //   });
 
 //   it('should render the selection menu', () => {
