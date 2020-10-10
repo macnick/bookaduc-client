@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signup } from '../../actions/signupActions';
-
+import PropTypes from 'prop-types';
+import signup from '../../actions/signupActions';
+/* eslint-disable jsx-a11y/label-has-associated-control */
 const SignUp = ({ signup }) => {
   const history = useHistory();
-
   const state = {
     name: '',
     email: '',
@@ -29,18 +29,18 @@ const SignUp = ({ signup }) => {
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" onChange={handleChange} />
+          <input type="text" name="name" onChange={handleChange} />
         </div>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" onChange={handleChange} />
+          <input type="email" name="email" onChange={handleChange} />
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" onChange={handleChange} />
+          <input type="password" name="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <button className="btn red darken-3 z-depth-1">Sign Up</button>
+          <button className="btn red darken-3 z-depth-1" type="submit">Sign Up</button>
         </div>
         <p className="grey-text">
           Already a user?
@@ -54,5 +54,9 @@ const SignUp = ({ signup }) => {
 const mapDispatchToProps = dispatch => ({
   signup: user => dispatch(signup(user)),
 });
+
+SignUp.propTypes = {
+  signup: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(SignUp);

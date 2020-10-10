@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { createBooking, loadUserBookings } from '../../actions/bookingActions';
+import PropTypes from 'prop-types';
+import { createBooking } from '../../actions/bookingActions';
 import parseJwt from '../../helpers/parseJWT';
 
-const BikeDetails = ({
-  bikes, token, createBooking, loadUserBookings,
-}) => {
+const BikeDetails = ({ bikes, token, createBooking }) => {
   const { id } = useParams();
   const bike = bikes.find(b => b.id === +id) || 1;
   const history = useHistory();
@@ -54,7 +53,7 @@ const BikeDetails = ({
             </p>
           </div>
           <form onSubmit={handleSubmit} className="red book-form">
-            <label htmlFor="city">Select a City</label>
+            <p>Select a City</p>
             <div className="input-field col s12">
               <select
                 name="city"
@@ -71,7 +70,7 @@ const BikeDetails = ({
               </select>
             </div>
 
-            <label htmlFor="date">
+            <p htmlFor="date">
               Pick a date
               <div className="pick-date">
                 <input
@@ -81,9 +80,9 @@ const BikeDetails = ({
                   onChange={handleChange}
                 />
               </div>
-            </label>
+            </p>
             <div className="input-field">
-              <button className="btn red darken-3 z-depth-1">Book Ride</button>
+              <button className="btn red darken-3 z-depth-1" type="submit">Book Ride</button>
             </div>
           </form>
         </div>
@@ -99,7 +98,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createBooking: (token, appointment) => dispatch(createBooking(token, appointment)),
-  loadUserBookings: (token, user) => dispatch(loadUserBookings(token, user)),
 });
+
+BikeDetails.propTypes = {
+  token: PropTypes.string.isRequired,
+  bikes: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  createBooking: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BikeDetails);

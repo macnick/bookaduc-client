@@ -6,7 +6,7 @@ import BookingList from './BookingList';
 const UserPage = ({ user, bookings }) => (
   <div className="user container">
     Hello
-    {user}
+    {` ${user}`}
     <div className="row">
       <div>
         <BookingList bookings={bookings} />

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { login } from '../../actions/loginActions';
-
+/* eslint-disable jsx-a11y/label-has-associated-control */
 const Login = ({ login }) => {
   const history = useHistory();
 
@@ -34,10 +35,10 @@ const Login = ({ login }) => {
           <input type="password" id="password" onChange={handleChange} />
         </div>
         <div className="input-field">
-          <button className="btn red darken-3 z-depth-1">Login</button>
+          <button className="btn red darken-3 z-depth-1" type="submit">Login</button>
         </div>
         <p className="grey-text">
-          Don't have an account?
+          Create an account
           <Link to="/signup">{' Signup'}</Link>
         </p>
       </form>
@@ -48,5 +49,9 @@ const Login = ({ login }) => {
 const mapDispatchToProps = dispatch => ({
   login: user => dispatch(login(user)),
 });
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Login);

@@ -28,7 +28,6 @@ const signup = user => dispatch => {
   axios
     .post(`${BASE_URL}${SIGNUP_URL}`, user)
     .then(response => {
-      console.log(response.status);
       if (response.status === 201) {
         dispatch(signupSuccess(response.data));
         const token = response.data.auth_token;
@@ -40,4 +39,4 @@ const signup = user => dispatch => {
     });
 };
 
-export { signup };
+export default signup;

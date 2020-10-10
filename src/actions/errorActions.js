@@ -1,1 +1,3 @@
-const errorActions = () => {};
+const errorActions = () => { };
+
+export default errorActions;

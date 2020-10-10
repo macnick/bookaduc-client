@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
 import axios from 'axios';
 import {
   BASE_URL,
@@ -47,6 +49,20 @@ const bookingsFail = error => ({
   payload: error,
 });
 
+const loadUserBookings = (token, userId) => dispatch => {
+  dispatch(bookingsRequest);
+  axios
+    .get(`${BASE_URL}${USER_URL}${userId}`, {
+      headers: { Authorization: token },
+    })
+    .then(response => {
+      dispatch(bookingsSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(bookingsFail(error));
+    });
+};
+
 const createBooking = (token, data) => dispatch => {
   dispatch(bookRequest());
   axios
@@ -64,7 +80,6 @@ const updateBooking = (token, data) => dispatch => {
   dispatch({ type: 'UPDATE_REQUEST' });
   const { book_id } = data;
   delete data.book_id;
-  console.log('data:', data);
   axios
     .patch(`${BASE_URL}${BOOK_URL}/${book_id}`, data, {
       headers: { Authorization: token },
@@ -80,20 +95,6 @@ const updateBooking = (token, data) => dispatch => {
     });
 };
 
-const loadUserBookings = (token, userId) => dispatch => {
-  dispatch(bookingsRequest);
-  axios
-    .get(`${BASE_URL}${USER_URL}${userId}`, {
-      headers: { Authorization: token },
-    })
-    .then(response => {
-      dispatch(bookingsSuccess(response.data));
-    })
-    .catch(error => {
-      dispatch(bookingsFail(error));
-    });
-};
-
 const deleteBooking = (token, book_id, user_id) => dispatch => {
   dispatch({ type: DELETING_BOOKING });
   axios
@@ -101,10 +102,10 @@ const deleteBooking = (token, book_id, user_id) => dispatch => {
       headers: { Authorization: token },
     })
     .then(response => {
-      dispatch({ type: BOOKING_DELETED });
+      dispatch({ type: BOOKING_DELETED, payload: response.data });
       dispatch(loadUserBookings(token, user_id));
     })
-    .catch(error => console.log(error));
+    .catch(error => dispatch(bookFail(error.message)));
 };
 
 export {
