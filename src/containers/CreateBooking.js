@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createBooking } from '../actions/bookingActions';
 
 class CreateBooking extends Component {
-  state = {
-    city: '',
-    date: '',
-    bike_id: '',
-    user_id: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: '',
+      date: '',
+      bike_id: '',
+      user_id: '',
+    };
+  }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.createBooking(this.state);
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value,
     });
@@ -35,7 +39,7 @@ class CreateBooking extends Component {
             <input type="date" id="date" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-1">Book this</button>
+            <button className="btn pink lighten-1 z-depth-1" type="button">Book this</button>
           </div>
         </form>
       </div>
@@ -43,10 +47,14 @@ class CreateBooking extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     createBooking: (booking) => dispatch(createBooking(booking)),
   };
+};
+
+CreateBooking.propTypes = {
+  createBooking: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(CreateBooking);
