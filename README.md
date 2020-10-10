@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d1299b7f-7200-4245-a14c-ae688bafeaf/deploy-status)](https://app.netlify.com/sites/motogp-macnick/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d1299b7f-7200-4245-a14c-ae688bafeaf/deploy-status)](https://app.netlify.com/sites/bookaduc/deploys)
 
 # BookADuc App
 
@@ -88,9 +88,9 @@ Use your terminal and run the commands after each instruction.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/macnick/motogp-db/issues).
+Feel free to check the [issues page](https://github.com/macnick/bookaduc-client/issues).
 
-1. Fork it (https://github.com/macnick/motogp-db/fork)
+1. Fork it (https://github.com/macnick/bookaduc-client/fork)
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
