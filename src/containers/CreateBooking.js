@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createBooking } from '../actions/bookingActions';
-
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 class CreateBooking extends Component {
   constructor(props) {
     super(props);
@@ -47,11 +48,9 @@ class CreateBooking extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createBooking: (booking) => dispatch(createBooking(booking)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  createBooking: booking => dispatch(createBooking(booking)),
+});
 
 CreateBooking.propTypes = {
   createBooking: PropTypes.func.isRequired,
