@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d1299b7f-7200-4245-a14c-ae688bafeaf/deploy-status)](https://app.netlify.com/sites/bookaduc/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b10f836d-a357-40c6-ae15-e490e2d595d2/deploy-status)](https://app.netlify.com/sites/bookaduc/deploys)
 
 # BookADuc App
 
@@ -44,7 +44,7 @@ The user can
 
 A live version will be hosted on Netlify.
 
-- [**BookADuc**] @ Netlify
+- [**BookADuc**](https://bookaduc.netlify.app) @ Netlify
 
 [Up](#Table-of-Contents)
 
@@ -69,9 +69,6 @@ Use your terminal and run the commands after each instruction.
 ## Acknowledgements
 
 - [Microverse](https://www.microverse.org) software development school
-- [Saheed Oladele](https://github.com/suretrust) code review
-- [Louis Chia](https://github.com/shloch) code review
-- [Sérgio Torres da Silveira Filho](https://github.com/Torres-ssf) code review
 
 [Up](#Table-of-Contents)
 
@@ -91,7 +88,7 @@ Contributions, issues and feature requests are welcome!
 Feel free to check the [issues page](https://github.com/macnick/bookaduc-client/issues).
 
 1. Fork it (https://github.com/macnick/bookaduc-client/fork)
-2. Create your feature branch (git checkout -b my-new-feature)
+2. Create your feature branch (git checkout -b your-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create a new Pull Request
