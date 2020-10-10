@@ -73,8 +73,4 @@
 //     fireEvent.select(getByRole('combobox'), { target: { value: 'Italy' } });
 //     expect(getByTestId('head-select')).toHaveValue('Italy');
 //   });
-<<<<<<< HEAD
 // });
-=======
-// });
->>>>>>> development
