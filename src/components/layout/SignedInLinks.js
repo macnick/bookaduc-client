@@ -6,9 +6,15 @@ import { logout } from '../../actions/loginActions';
 const SingedInLinks = ({ name }) => (
   <>
     <li>
-      <NavLink to="/user" className="sidenav-close">
+      <NavLink to="" className="sidenav-close">
         <i className="material-icons">person</i>
         {name}
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/user" className="sidenav-close">
+        <i className="material-icons">date_range</i>
+        Appointments
       </NavLink>
     </li>
     <li>

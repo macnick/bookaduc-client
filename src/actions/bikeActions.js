@@ -38,4 +38,4 @@ const bikesList = token => dispatch => {
     });
 };
 
-export { bikesList };
+export default bikesList;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { updateBooking } from '../../actions/bookingActions';
 
+/* eslint-disable camelcase */
 const EditBooking = ({
   token, updateBooking, bookings, bikes, user_id,
 }) => {
@@ -11,8 +12,6 @@ const EditBooking = ({
   const book = bookings.find(b => b.id === +id) || 1;
   const bike = bikes.find(b => b.id === book.bike.id);
   const history = useHistory();
-
-  console.log('edit booking id: ', id, 'bike:', bike, 'userId:', user_id);
 
   const appointment = {
     city: 'Athens',
@@ -58,7 +57,7 @@ const EditBooking = ({
             </p>
           </div>
           <form onSubmit={handleSubmit} className="white book-form">
-            <label htmlFor="city">Select a City</label>
+            <p>Select a City</p>
             <div className="input-field col s12">
               <select
                 name="city"
@@ -112,8 +111,15 @@ const mapDispatchToProps = dispatch => ({
 EditBooking.propTypes = {
   token: PropTypes.string.isRequired,
   updateBooking: PropTypes.func.isRequired,
-  bookings: PropTypes.arrayOf(objects).isRequired,
-  bikes: PropTypes.arrayOf(objects).isRequired,
+  bookings: PropTypes.arrayOf(PropTypes.shape({
+    bike: PropTypes.shape({ id: PropTypes.number.isRequired, name: PropTypes.string.isRequired }),
+    city: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  })).isRequired,
+  bikes: PropTypes.arrayOf(PropTypes.shape({
+    displacement: PropTypes.string.isRequired,
+  })).isRequired,
   user_id: PropTypes.number.isRequired,
 };
 

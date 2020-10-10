@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { bikesList } from './bikeActions';
+import bikesList from './bikeActions';
 import { loadUserBookings } from './bookingActions';
 import parseJwt from '../helpers/parseJWT';
 import {

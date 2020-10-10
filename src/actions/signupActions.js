@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { bikesList } from './bikeActions';
+import bikesList from './bikeActions';
 import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
