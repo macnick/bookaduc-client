@@ -5,7 +5,7 @@ import LoggedOutLinks from './LoggedOutLinks';
 import SingedInLinks from './SignedInLinks';
 
 const Navbar = ({ loggedIn, name }) => (
-  <div className="container">
+  <div className="container section">
     <ul id="menu-side" className="sidenav right">
       {loggedIn ? <SingedInLinks name={name} /> : <LoggedOutLinks />}
     </ul>
