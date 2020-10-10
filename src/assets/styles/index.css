@@ -18,7 +18,6 @@ body {
   font-family: sans-serif;
   background: url(../img/Ducati-Superleggera-V4-Hero.jpg) no-repeat;
   background-size: cover;
-  background-position: fixed;
   background-color: #95e8f3;
   min-height: 100%;
   overflow-x: hidden;
@@ -42,8 +41,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: none;
 }
 
-input[type='text']:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label,
 input[type='email']:not(.browser-default):focus:not([readonly]) + label,
 input[type='password']:not(.browser-default):focus:not([readonly]) + label {
   color: #ec407a !important;
@@ -75,4 +74,8 @@ p {
 
 .user-btn {
   width: 260px;
+}
+
+.sidenav-trigger {
+  background-color: #161616;
 }
