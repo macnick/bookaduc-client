@@ -9,14 +9,14 @@ const Navbar = ({ loggedIn, name }) => (
     <ul id="menu-side" className="sidenav right">
       {loggedIn ? <SingedInLinks name={name} /> : <LoggedOutLinks />}
     </ul>
-    <div
+    <button
       type="button"
       href="#"
       className="sidenav-trigger"
       data-target="menu-side"
     >
-      <i className="material-icons">menu</i>
-    </div>
+      <i className="material-icons small">menu</i>
+    </button>
   </div>
 );
 

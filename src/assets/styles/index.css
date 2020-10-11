@@ -75,3 +75,9 @@ p {
 .user-btn {
   width: 260px;
 }
+
+.sidenav-trigger {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
