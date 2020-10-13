@@ -25,8 +25,9 @@ export const BOOKING_DELETED = 'BOOKING_DELETED';
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-export const BASE_URL = 'https://evening-cove-51744.herokuapp.com';
-export const SIGNUP_URL = '/signup';
+// export const BASE_URL = 'https://evening-cove-51744.herokuapp.com';
+export const BASE_URL = 'http://localhost:3000';
+export const SIGNUP_URL = '/api/v1/users';
 export const LOGIN_URL = '/auth/login';
 export const ALL_BIKES = '/api/v1/bikes';
 export const BIKE_INFO = '/api/v1/bikes/';

@@ -81,3 +81,11 @@ p {
   color: #fff;
   border: none;
 }
+
+#bikelist {
+  margin-top: 8rem;
+}
+
+.card {
+  margin: 0 3px;
+}

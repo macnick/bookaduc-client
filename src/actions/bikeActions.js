@@ -28,7 +28,7 @@ const bikesList = token => dispatch => {
   dispatch(bikesRequest());
   axios
     .get(`${BASE_URL}${ALL_BIKES}`, {
-      headers: { Authorization: token },
+      headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
       dispatch(bikesSuccess(response.data));

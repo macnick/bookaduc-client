@@ -10,7 +10,6 @@ const SignUp = ({ signup }) => {
     name: '',
     email: '',
     password: '',
-    msg: '',
   };
 
   const handleSubmit = e => {
@@ -29,15 +28,15 @@ const SignUp = ({ signup }) => {
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" onChange={handleChange} />
+          <input type="text" id="name" onChange={handleChange} />
         </div>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" onChange={handleChange} />
+          <input type="email" id="email" onChange={handleChange} />
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" onChange={handleChange} />
+          <input type="password" id="password" onChange={handleChange} />
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">Sign Up</button>
