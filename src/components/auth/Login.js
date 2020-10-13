@@ -28,11 +28,11 @@ const Login = ({ login }) => {
         <h5 className="grey-text text-darken-3">Log In</h5>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" onChange={handleChange} />
+          <input type="email" id="email" onChange={handleChange} required />
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" onChange={handleChange} />
+          <input type="password" id="password" onChange={handleChange} required />
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">Login</button>

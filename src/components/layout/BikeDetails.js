@@ -78,6 +78,7 @@ const BikeDetails = ({ bikes, token, createBooking }) => {
                   name="date"
                   id="date"
                   onChange={handleChange}
+                  required
                 />
               </div>
             </p>
