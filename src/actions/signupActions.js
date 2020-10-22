@@ -34,8 +34,8 @@ const signup = user => dispatch => {
         dispatch(bikesList(token));
       }
     })
-    .catch(error => {
-      dispatch(signupFail(error.message));
+    .catch(() => {
+      dispatch(signupFail('An account with this email already exists, please login'));
     });
 };
 

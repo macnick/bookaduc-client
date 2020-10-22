@@ -3,8 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import signup from '../../actions/signupActions';
+import Errors from '../Errors'
 /* eslint-disable jsx-a11y/label-has-associated-control */
-const SignUp = ({ signup }) => {
+const SignUp = ({ signup, error }) => {
   const history = useHistory();
   const state = {
     name: '',
@@ -25,6 +26,7 @@ const SignUp = ({ signup }) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">
+      {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>

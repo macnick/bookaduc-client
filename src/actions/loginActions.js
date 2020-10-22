@@ -37,8 +37,8 @@ const login = user => dispatch => {
       dispatch(bikesList(token));
       dispatch(loadUserBookings(token, userId));
     })
-    .catch(error => {
-      dispatch(loginFail(error.message));
+    .catch(() => {
+      dispatch(loginFail('Invalid credentials, please try again or signup'));
     });
 };
 

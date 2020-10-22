@@ -3,8 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/loginActions';
+import Errors from '../Errors';
 /* eslint-disable jsx-a11y/label-has-associated-control */
-const Login = ({ login }) => {
+const Login = ({ login, error }) => {
   const history = useHistory();
 
   const state = {
@@ -25,6 +26,7 @@ const Login = ({ login }) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">
+        {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Log In</h5>
         <div className="input-field">
           <label htmlFor="email">Email</label>
@@ -46,6 +48,10 @@ const Login = ({ login }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  error: state.auth.error,
+});
+
 const mapDispatchToProps = dispatch => ({
   login: user => dispatch(login(user)),
 });
@@ -54,4 +60,4 @@ Login.propTypes = {
   login: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

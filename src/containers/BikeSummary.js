@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BikeSummary = ({ bike }) => (
   <Link to={`/bikes/${bike.id}`}>
-    <div className="card z-depth-2">
+    <div className="card z-depth-2 bike-card">
       <div className="card-image">
         <img src={bike.image} alt={bike.name} style={{ width: '100%' }} />
       </div>

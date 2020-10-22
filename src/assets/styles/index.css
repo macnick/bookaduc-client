@@ -87,15 +87,25 @@ p {
 }
 
 .card {
-  margin: 0 0.4rem;
+  margin: 0 0.2rem;
+}
+
+.bike-card {
+  height: 25rem;
+}
+
+.error-message {
+  color: #A22;
+  font-size: large;
+  margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 464px) {
   #bikelist {
-    margin-top: 3rem;
+    margin-top: 2.9rem;
   }
 
   .card {
-    margin: 0, 0.2rem;
+    margin: 0, 0.1rem;
   }
 }

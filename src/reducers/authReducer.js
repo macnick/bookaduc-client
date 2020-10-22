@@ -33,11 +33,13 @@ const authReducer = (state = initState, action) => {
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
     case LOGOUT:
+      console.log(action.payload)
       return {
         ...state,
         authStatus: false,
         token: '',
         loading: false,
+        error: action.payload,
       };
     default:
       return state;
