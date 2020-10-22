@@ -53,7 +53,7 @@ const loadUserBookings = (token, userId) => dispatch => {
   dispatch(bookingsRequest);
   axios
     .get(`${BASE_URL}${USER_URL}${userId}`, {
-      headers: { Authorization: token },
+      headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
       dispatch(bookingsSuccess(response.data));
@@ -66,7 +66,7 @@ const loadUserBookings = (token, userId) => dispatch => {
 const createBooking = (token, data) => dispatch => {
   dispatch(bookRequest());
   axios
-    .post(`${BASE_URL}${BOOK_URL}`, data, { headers: { Authorization: token } })
+    .post(`${BASE_URL}${BOOK_URL}`, data, { headers: { Authorization: `Bearer ${token}` } })
     .then(response => {
       dispatch(bookSuccess(response.data));
       dispatch(loadUserBookings(token, data.user_id));
@@ -82,7 +82,7 @@ const updateBooking = (token, data) => dispatch => {
   delete data.book_id;
   axios
     .patch(`${BASE_URL}${BOOK_URL}/${book_id}`, data, {
-      headers: { Authorization: token },
+      headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
       if (response.data.status === 'patched') {
@@ -99,7 +99,7 @@ const deleteBooking = (token, book_id, user_id) => dispatch => {
   dispatch({ type: DELETING_BOOKING });
   axios
     .delete(`${BASE_URL}${BOOK_URL}/${book_id}`, {
-      headers: { Authorization: token },
+      headers: { Authorization: `Bearer ${token}` },
     })
     .then(response => {
       dispatch({ type: BOOKING_DELETED, payload: response.data });
