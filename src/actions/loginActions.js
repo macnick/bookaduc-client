@@ -1,4 +1,4 @@
-import axios, { setAuthorizationToken } from '../services/axios-api';
+import { setAuthorizationToken, fetchData } from '../services/axios-api';
 import bikesList from './bikeActions';
 import { loadUserBookings } from './bookingActions';
 import parseJwt from '../helpers/parseJWT';
@@ -27,8 +27,7 @@ const loginFail = error => ({
 
 const login = user => dispatch => {
   dispatch(loginRequest());
-  axios
-    .post(`${LOGIN_URL}`, user)
+  fetchData('post', `${LOGIN_URL}`, user)
     .then(response => {
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;

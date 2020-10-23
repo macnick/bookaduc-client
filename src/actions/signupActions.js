@@ -1,4 +1,4 @@
-import axios from '../services/axios-api';
+import {setAuthorizationToken, fetchData} from '../services/axios-api';
 import bikesList from './bikeActions';
 import {
   SIGNUP_REQUEST,
@@ -24,13 +24,13 @@ const signupFail = error => ({
 
 const signup = user => dispatch => {
   dispatch(signupRequest());
-  axios
-    .post(`${SIGNUP_URL}`, user)
+  fetchData('post', `${SIGNUP_URL}`, user)
     .then(response => {
       if (response.status === 201) {
         dispatch(signupSuccess(response.data));
         const token = response.data.auth_token;
-        dispatch(bikesList(token));
+        setAuthorizationToken(token);
+        dispatch(bikesList());
       }
     })
     .catch(() => {

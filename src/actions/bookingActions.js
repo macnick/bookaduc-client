@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
-import axios from '../services/axios-api';
+import {fetchData} from '../services/axios-api';
 import {
   BOOK_URL,
   USER_URL,
@@ -50,8 +50,7 @@ const bookingsFail = error => ({
 
 const loadUserBookings = userId => dispatch => {
   dispatch(bookingsRequest);
-  axios
-    .get(`${USER_URL}${userId}`)
+  fetchData('get', `${USER_URL}${userId}`)
     .then(response => {
       dispatch(bookingsSuccess(response.data));
     })
@@ -62,8 +61,7 @@ const loadUserBookings = userId => dispatch => {
 
 const createBooking = data => dispatch => {
   dispatch(bookRequest());
-  axios
-    .post(`${BOOK_URL}`, data)
+  fetchData('post', `${BOOK_URL}`, data)
     .then(response => {
       dispatch(bookSuccess(response.data));
       dispatch(loadUserBookings(data.user_id));
@@ -77,8 +75,7 @@ const updateBooking = data => dispatch => {
   dispatch({ type: 'UPDATE_REQUEST' });
   const { book_id } = data;
   delete data.book_id;
-  axios
-    .patch(`${BOOK_URL}/${book_id}`, data)
+  fetchData('patch', `${BOOK_URL}/${book_id}`, data)
     .then(response => {
       if (response.data.status === 'patched') {
         dispatch({ type: 'BOOKING_UPDATE_SUCCESS' });
@@ -92,8 +89,7 @@ const updateBooking = data => dispatch => {
 
 const deleteBooking = (book_id, user_id) => dispatch => {
   dispatch({ type: DELETING_BOOKING });
-  axios
-    .delete(`${BOOK_URL}/${book_id}`)
+  fetchData('delete', `${BOOK_URL}/${book_id}`)
     .then(response => {
       dispatch({ type: BOOKING_DELETED, payload: response.data });
       dispatch(loadUserBookings(user_id));
