@@ -12,4 +12,9 @@ export const setAuthorizationToken = (token) => {
   }
 };
 
+export const fetchData = (method, url, data) => {
+  const result = instance[method](url, data);
+  return result;
+}
+
 export default instance;

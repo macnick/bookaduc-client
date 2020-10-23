@@ -31,7 +31,7 @@ const login = user => dispatch => {
     .post(`${LOGIN_URL}`, user)
     .then(response => {
       dispatch(loginSuccess(response.data));
-      const token = response.data.auth_token; // to be eliminated
+      const token = response.data.auth_token;
       setAuthorizationToken(token);
       const userId = parseJwt(token).user_id;
       dispatch(bikesList());

@@ -19,7 +19,7 @@ const App = ({ loggedIn }) => (
     <div className="app">
       <Navbar />
       <Switch>
-        <Route exact path="/" component={loggedIn ? BikeList : SignUp} />
+        <Route exact path="/" component={loggedIn ? BikeList : Login} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/bikes/" component={loggedIn ? BikeList : Login} />

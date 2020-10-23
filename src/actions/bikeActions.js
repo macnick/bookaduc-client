@@ -1,4 +1,4 @@
-import axios from '../services/axios-api';
+import {fetchData} from '../services/axios-api';
 
 import {
   FETCH_BIKES_REQUEST,
@@ -23,24 +23,9 @@ const bikesFail = error => ({
   payload: error,
 });
 
-// const bikesList = token => dispatch => {
-//   dispatch(bikesRequest());
-//   axios
-//     .get(`${ALL_BIKES}`, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     })
-//     .then(response => {
-//       dispatch(bikesSuccess(response.data));
-//     })
-//     .catch(error => {
-//       dispatch(bikesFail(error.message));
-//     });
-// };
-
 const bikesList = () => dispatch => {
   dispatch(bikesRequest());
-  axios
-    .get(`${ALL_BIKES}`)
+  fetchData('get', `${ALL_BIKES}`)
     .then(response => {
       dispatch(bikesSuccess(response.data));
     })
