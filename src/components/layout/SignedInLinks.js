@@ -33,7 +33,7 @@ const SingedInLinks = ({ name }) => (
 );
 
 SingedInLinks.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
 export default SingedInLinks;

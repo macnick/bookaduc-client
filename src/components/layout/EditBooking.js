@@ -26,7 +26,7 @@ const EditBooking = ({
 
   const handleSubmit = e => {
     e.preventDefault();
-    updateBooking(token, appointment);
+    updateBooking(appointment);
     history.push('/user');
   };
 
@@ -105,7 +105,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateBooking: (token, appointment) => dispatch(updateBooking(token, appointment)),
+  updateBooking: (appointment) => dispatch(updateBooking(appointment)),
 });
 
 EditBooking.propTypes = {

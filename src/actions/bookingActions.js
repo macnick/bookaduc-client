@@ -1,8 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
-import axios from 'axios';
+import axios from '../services/axios-api';
 import {
-  BASE_URL,
   BOOK_URL,
   USER_URL,
   BOOK_APP_REQUEST,
@@ -49,12 +48,10 @@ const bookingsFail = error => ({
   payload: error,
 });
 
-const loadUserBookings = (token, userId) => dispatch => {
+const loadUserBookings = userId => dispatch => {
   dispatch(bookingsRequest);
   axios
-    .get(`${BASE_URL}${USER_URL}${userId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    .get(`${USER_URL}${userId}`)
     .then(response => {
       dispatch(bookingsSuccess(response.data));
     })
@@ -63,47 +60,43 @@ const loadUserBookings = (token, userId) => dispatch => {
     });
 };
 
-const createBooking = (token, data) => dispatch => {
+const createBooking = data => dispatch => {
   dispatch(bookRequest());
   axios
-    .post(`${BASE_URL}${BOOK_URL}`, data, { headers: { Authorization: `Bearer ${token}` } })
+    .post(`${BOOK_URL}`, data)
     .then(response => {
       dispatch(bookSuccess(response.data));
-      dispatch(loadUserBookings(token, data.user_id));
+      dispatch(loadUserBookings(data.user_id));
     })
     .catch(error => {
       dispatch(bookFail(error.message));
     });
 };
 
-const updateBooking = (token, data) => dispatch => {
+const updateBooking = data => dispatch => {
   dispatch({ type: 'UPDATE_REQUEST' });
   const { book_id } = data;
   delete data.book_id;
   axios
-    .patch(`${BASE_URL}${BOOK_URL}/${book_id}`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    .patch(`${BOOK_URL}/${book_id}`, data)
     .then(response => {
       if (response.data.status === 'patched') {
         dispatch({ type: 'BOOKING_UPDATE_SUCCESS' });
       }
-      dispatch(loadUserBookings(token, data.user_id));
+      dispatch(loadUserBookings(data.user_id));
     })
     .catch(error => {
       dispatch(bookFail(error.message));
     });
 };
 
-const deleteBooking = (token, book_id, user_id) => dispatch => {
+const deleteBooking = (book_id, user_id) => dispatch => {
   dispatch({ type: DELETING_BOOKING });
   axios
-    .delete(`${BASE_URL}${BOOK_URL}/${book_id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    .delete(`${BOOK_URL}/${book_id}`)
     .then(response => {
       dispatch({ type: BOOKING_DELETED, payload: response.data });
-      dispatch(loadUserBookings(token, user_id));
+      dispatch(loadUserBookings(user_id));
     })
     .catch(error => dispatch(bookFail(error.message)));
 };

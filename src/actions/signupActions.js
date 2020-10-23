@@ -1,10 +1,9 @@
-import axios from 'axios';
+import axios from '../services/axios-api';
 import bikesList from './bikeActions';
 import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
-  BASE_URL,
   SIGNUP_URL,
 } from './actionTypes';
 
@@ -26,7 +25,7 @@ const signupFail = error => ({
 const signup = user => dispatch => {
   dispatch(signupRequest());
   axios
-    .post(`${BASE_URL}${SIGNUP_URL}`, user)
+    .post(`${SIGNUP_URL}`, user)
     .then(response => {
       if (response.status === 201) {
         dispatch(signupSuccess(response.data));
