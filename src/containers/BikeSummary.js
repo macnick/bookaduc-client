@@ -10,9 +10,16 @@ const BikeSummary = ({ bike }) => (
       </div>
       <div className="card-content grey-text text-darken-4">
         <span className="card-title center-align">{bike.name}</span>
-        <div className="divider"></div>
+        <div className="divider" />
         <div className="input-field">
-          <p>A contemporary icon always featuring the core values of the original {bike.name}. Essential and technological, the {bike.name} stands out for design and sporty soul.</p>
+          <p>
+            A contemporary icon always featuring the core values of the original
+            {bike.name}
+            . Essential and technological, the
+            {bike.name}
+            {' '}
+            stands out for design and sporty soul.
+          </p>
           {/* <button className="btn red darken-3 z-depth-1" type="submit">Book a ride</button> */}
         </div>
       </div>

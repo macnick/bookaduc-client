@@ -1,4 +1,4 @@
-import {setAuthorizationToken, fetchData} from '../services/axios-api';
+import { setAuthorizationToken, fetchData } from '../services/axios-api';
 import bikesList from './bikeActions';
 import {
   SIGNUP_REQUEST,

@@ -1,4 +1,4 @@
-import {fetchData} from '../services/axios-api';
+import { fetchData } from '../services/axios-api';
 
 import {
   FETCH_BIKES_REQUEST,

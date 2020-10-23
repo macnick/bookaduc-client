@@ -60,7 +60,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteBooking: (id, userId) => dispatch(deleteBooking(id, userId)),
-  loadUserBookings: (id) => dispatch(loadUserBookings(id)),
+  loadUserBookings: id => dispatch(loadUserBookings(id)),
 });
 
 BookingDetails.propTypes = {

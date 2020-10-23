@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
-import {fetchData} from '../services/axios-api';
+import { fetchData } from '../services/axios-api';
 import {
   BOOK_URL,
   USER_URL,

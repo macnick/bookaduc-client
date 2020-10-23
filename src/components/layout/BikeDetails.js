@@ -98,7 +98,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createBooking: (appointment) => dispatch(createBooking(appointment)),
+  createBooking: appointment => dispatch(createBooking(appointment)),
 });
 
 BikeDetails.propTypes = {

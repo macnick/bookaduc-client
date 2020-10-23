@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 
 const Errors = ({ error }) => (
   <>
-    <div className="error-message"> {error}</div>
+    <div className="error-message">
+      {' '}
+      {error}
+    </div>
   </>
 );
 
 Errors.propTypes = {
-  errors: PropTypes.string,
+  error: PropTypes.string.isRequired,
 };
 
 export default Errors;
