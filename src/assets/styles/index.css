@@ -54,7 +54,8 @@ input[type='password']:not(.browser-default):focus:not([readonly]) + label {
   color: #fff;
 }
 
-h6, p {
+h6,
+p {
   font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.1em;
   line-height: 1.5em;
@@ -99,7 +100,7 @@ p {
 }
 
 .error-message {
-  color: #A22;
+  color: #a22;
   font-size: large;
   margin-bottom: 5px;
 }
@@ -110,6 +111,6 @@ p {
   }
 
   .card {
-    margin: 0, 0.1rem;
+    margin: 0, 0.1em;
   }
 }
