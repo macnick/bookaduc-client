@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { setAuthorizationToken, fetchData } from '../services/axios-api';
 import bikesList from './bikeActions';
 import { loadUserBookings } from './bookingActions';
 import parseJwt from '../helpers/parseJWT';
@@ -7,7 +7,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  BASE_URL,
   LOGIN_URL,
 } from './actionTypes';
 
@@ -28,17 +27,17 @@ const loginFail = error => ({
 
 const login = user => dispatch => {
   dispatch(loginRequest());
-  axios
-    .post(`${BASE_URL}${LOGIN_URL}`, user)
+  fetchData('post', `${LOGIN_URL}`, user)
     .then(response => {
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
+      setAuthorizationToken(token);
       const userId = parseJwt(token).user_id;
-      dispatch(bikesList(token));
-      dispatch(loadUserBookings(token, userId));
+      dispatch(bikesList());
+      dispatch(loadUserBookings(userId));
     })
-    .catch(error => {
-      dispatch(loginFail(error.message));
+    .catch(() => {
+      dispatch(loginFail('Invalid credentials, please try again or signup'));
     });
 };
 

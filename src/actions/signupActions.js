@@ -1,10 +1,9 @@
-import axios from 'axios';
+import { setAuthorizationToken, fetchData } from '../services/axios-api';
 import bikesList from './bikeActions';
 import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
-  BASE_URL,
   SIGNUP_URL,
 } from './actionTypes';
 
@@ -25,17 +24,17 @@ const signupFail = error => ({
 
 const signup = user => dispatch => {
   dispatch(signupRequest());
-  axios
-    .post(`${BASE_URL}${SIGNUP_URL}`, user)
+  fetchData('post', `${SIGNUP_URL}`, user)
     .then(response => {
       if (response.status === 201) {
         dispatch(signupSuccess(response.data));
         const token = response.data.auth_token;
-        dispatch(bikesList(token));
+        setAuthorizationToken(token);
+        dispatch(bikesList());
       }
     })
-    .catch(error => {
-      dispatch(signupFail(error.message));
+    .catch(() => {
+      dispatch(signupFail('An account with this email already exists, please login'));
     });
 };
 

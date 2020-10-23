@@ -7,8 +7,8 @@ import { deleteBooking, loadUserBookings } from '../actions/bookingActions';
 const BookingDetails = ({
   book, deleteBooking, token, userId,
 }) => {
-  const handleDelete = (token, bookId, userId) => {
-    deleteBooking(token, bookId, userId);
+  const handleDelete = (bookId, userId) => {
+    deleteBooking(bookId, userId);
   };
 
   return (
@@ -31,7 +31,7 @@ const BookingDetails = ({
       <div>
         <button
           type="submit"
-          onClick={() => handleDelete(token, book.id, userId)}
+          onClick={() => handleDelete(book.id, userId)}
           className="btn red darken-3 z-depth-2  user-btn"
         >
           Cancel Booking
@@ -59,8 +59,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteBooking: (token, id, userId) => dispatch(deleteBooking(token, id, userId)),
-  loadUserBookings: (token, id) => dispatch(loadUserBookings(token, id)),
+  deleteBooking: (id, userId) => dispatch(deleteBooking(id, userId)),
+  loadUserBookings: id => dispatch(loadUserBookings(id)),
 });
 
 BookingDetails.propTypes = {

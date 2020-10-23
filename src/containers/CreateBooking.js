@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createBooking } from '../actions/bookingActions';
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+
 class CreateBooking extends Component {
   constructor(props) {
     super(props);
@@ -15,17 +14,19 @@ class CreateBooking extends Component {
     };
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.createBooking(this.state);
-  };
-
-  handleChange = e => {
+  handleChange(e) {
     this.setState({
       [e.target.id]: e.target.value,
     });
-  };
+  }
 
+  /* eslint-disable react/destructuring-assignment */
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createBooking(this.state);
+  }
+
+  /* eslint-disable jsx-a11y/label-has-associated-control */
   render() {
     return (
       <div className="container">

@@ -1,10 +1,9 @@
-import axios from 'axios';
+import { fetchData } from '../services/axios-api';
 
 import {
   FETCH_BIKES_REQUEST,
   FETCH_BIKES_SUCCESS,
   FETCH_BIKES_FAIL,
-  BASE_URL,
   ALL_BIKES,
 } from './actionTypes';
 
@@ -24,12 +23,9 @@ const bikesFail = error => ({
   payload: error,
 });
 
-const bikesList = token => dispatch => {
+const bikesList = () => dispatch => {
   dispatch(bikesRequest());
-  axios
-    .get(`${BASE_URL}${ALL_BIKES}`, {
-      headers: { Authorization: token },
-    })
+  fetchData('get', `${ALL_BIKES}`)
     .then(response => {
       dispatch(bikesSuccess(response.data));
     })

@@ -29,6 +29,7 @@ const authReducer = (state = initState, action) => {
         token: action.payload.auth_token,
         authStatus: true,
         loading: false,
+        error: null,
       };
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
@@ -38,6 +39,7 @@ const authReducer = (state = initState, action) => {
         authStatus: false,
         token: '',
         loading: false,
+        error: action.payload,
       };
     default:
       return state;

@@ -6,7 +6,7 @@ import { updateBooking } from '../../actions/bookingActions';
 
 /* eslint-disable camelcase */
 const EditBooking = ({
-  token, updateBooking, bookings, bikes, user_id,
+  updateBooking, bookings, bikes, user_id,
 }) => {
   const { id } = useParams();
   const book = bookings.find(b => b.id === +id) || 1;
@@ -26,7 +26,7 @@ const EditBooking = ({
 
   const handleSubmit = e => {
     e.preventDefault();
-    updateBooking(token, appointment);
+    updateBooking(appointment);
     history.push('/user');
   };
 
@@ -105,11 +105,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateBooking: (token, appointment) => dispatch(updateBooking(token, appointment)),
+  updateBooking: appointment => dispatch(updateBooking(appointment)),
 });
 
 EditBooking.propTypes = {
-  token: PropTypes.string.isRequired,
   updateBooking: PropTypes.func.isRequired,
   bookings: PropTypes.arrayOf(PropTypes.shape({
     bike: PropTypes.shape({ id: PropTypes.number.isRequired, name: PropTypes.string.isRequired }),

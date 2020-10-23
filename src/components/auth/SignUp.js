@@ -3,14 +3,14 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import signup from '../../actions/signupActions';
+import Errors from '../Errors';
 /* eslint-disable jsx-a11y/label-has-associated-control */
-const SignUp = ({ signup }) => {
+const SignUp = ({ signup, error }) => {
   const history = useHistory();
   const state = {
     name: '',
     email: '',
     password: '',
-    msg: '',
   };
 
   const handleSubmit = e => {
@@ -26,18 +26,19 @@ const SignUp = ({ signup }) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">
+        {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" onChange={handleChange} />
+          <input type="text" id="name" onChange={handleChange} required />
         </div>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" onChange={handleChange} />
+          <input type="email" id="email" onChange={handleChange} required />
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" onChange={handleChange} />
+          <input type="password" id="password" onChange={handleChange} required />
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">Sign Up</button>
@@ -57,6 +58,7 @@ const mapDispatchToProps = dispatch => ({
 
 SignUp.propTypes = {
   signup: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(SignUp);

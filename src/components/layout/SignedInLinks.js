@@ -31,9 +31,9 @@ const SingedInLinks = ({ name }) => (
     </li>
   </>
 );
-
+/* eslint-disable react/require-default-props */
 SingedInLinks.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
 export default SingedInLinks;

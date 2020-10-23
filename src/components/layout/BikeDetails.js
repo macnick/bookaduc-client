@@ -22,7 +22,7 @@ const BikeDetails = ({ bikes, token, createBooking }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createBooking(token, appointment);
+    createBooking(appointment);
     history.push('/user');
   };
 
@@ -78,6 +78,7 @@ const BikeDetails = ({ bikes, token, createBooking }) => {
                   name="date"
                   id="date"
                   onChange={handleChange}
+                  required
                 />
               </div>
             </p>
@@ -97,7 +98,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createBooking: (token, appointment) => dispatch(createBooking(token, appointment)),
+  createBooking: appointment => dispatch(createBooking(appointment)),
 });
 
 BikeDetails.propTypes = {

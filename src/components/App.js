@@ -19,17 +19,17 @@ const App = ({ loggedIn }) => (
     <div className="app">
       <Navbar />
       <Switch>
+        <Route exact path="/" component={loggedIn ? BikeList : Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/bikes/" component={loggedIn ? BikeList : Login} />
         <Route path="/bikes/:id" component={loggedIn ? BikeDetails : Login} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
         <Route path="/user" component={loggedIn ? UserPage : Login} />
         <Route path="/book" component={loggedIn ? CreateBooking : Login} />
         <Route
           path="/update/:id"
           component={loggedIn ? EditBooking : Login}
         />
-        <Route path="/" component={loggedIn ? BikeList : Login} />
       </Switch>
     </div>
   </BrowserRouter>
