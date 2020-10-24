@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import signup from '../../actions/signupActions';
 import Errors from '../Errors';
+import Spinner from '../layout/Spinner';
 /* eslint-disable jsx-a11y/label-has-associated-control */
-const SignUp = ({ signup, error }) => {
+const SignUp = ({ signup, error, loading }) => {
   const history = useHistory();
   const state = {
     name: '',
@@ -26,6 +27,7 @@ const SignUp = ({ signup, error }) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">
+        {loading && <Spinner />}
         {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
@@ -52,6 +54,11 @@ const SignUp = ({ signup, error }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  error: state.auth.error,
+  loading: state.auth.loading,
+});
+
 const mapDispatchToProps = dispatch => ({
   signup: user => dispatch(signup(user)),
 });
@@ -59,6 +66,7 @@ const mapDispatchToProps = dispatch => ({
 SignUp.propTypes = {
   signup: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

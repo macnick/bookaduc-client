@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/loginActions';
 import Errors from '../Errors';
+import Spinner from '../layout/Spinner';
 /* eslint-disable jsx-a11y/label-has-associated-control */
-const Login = ({ login, error }) => {
+const Login = ({ login, error, loading }) => {
   const history = useHistory();
 
   const state = {
@@ -26,6 +27,7 @@ const Login = ({ login, error }) => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="white">
+        {loading && <Spinner />}
         {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Log In</h5>
         <div className="input-field">
@@ -50,6 +52,7 @@ const Login = ({ login, error }) => {
 
 const mapStateToProps = state => ({
   error: state.auth.error,
+  loading: state.auth.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -59,6 +62,7 @@ const mapDispatchToProps = dispatch => ({
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
