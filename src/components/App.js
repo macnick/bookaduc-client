@@ -1,9 +1,8 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-named-as-default-member */
 import React from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Navbar from './layout/Navbar';
 import BikeList from '../containers/BikeList';
@@ -14,33 +13,35 @@ import Login from './auth/Login';
 import SignUp from './auth/SignUp';
 import UserPage from '../containers/UserPage';
 
-const App = ({ loggedIn }) => (
-  <BrowserRouter>
-    <div className="app">
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={loggedIn ? BikeList : Login} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/bikes/" component={loggedIn ? BikeList : Login} />
-        <Route path="/bikes/:id" component={loggedIn ? BikeDetails : Login} />
-        <Route path="/user" component={loggedIn ? UserPage : Login} />
-        <Route path="/book" component={loggedIn ? CreateBooking : Login} />
-        <Route
-          path="/update/:id"
-          component={loggedIn ? EditBooking : Login}
-        />
-      </Switch>
-    </div>
-  </BrowserRouter>
-);
+const App = () => {
+  const loggedIn = useSelector((store) => store.auth.authStatus);
 
-const mapStateToProps = state => ({
-  loggedIn: state.auth.authStatus,
-});
-
-App.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
+  return (
+    <BrowserRouter>
+      <div className="app">
+        <Navbar />
+        <Switch>
+          {loggedIn ? (
+            <>
+              <Route exact path="/" component={BikeList} />
+              <Route path="/bikes/:id" component={BikeDetails} />
+              <Route exact path="/bikes/" component={BikeList} />
+              <Route path="/user" component={UserPage} />
+              <Route path="/book" component={CreateBooking} />
+              <Route path="/update/:id" component={EditBooking} />
+              <Redirect to="/" />
+            </>
+          ) : (
+            <>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
+            </>
+          )}
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
 };
 
-export default connect(mapStateToProps, null)(App);
+export default App;

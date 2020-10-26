@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import signup from '../../actions/signupActions';
@@ -7,20 +7,18 @@ import Errors from '../Errors';
 import Spinner from '../layout/Spinner';
 /* eslint-disable jsx-a11y/label-has-associated-control */
 const SignUp = ({ signup, error, loading }) => {
-  const history = useHistory();
   const state = {
     name: '',
     email: '',
     password: '',
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     signup(state);
-    history.push('/bikes');
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     state[e.target.id] = e.target.value;
   };
 
@@ -40,10 +38,17 @@ const SignUp = ({ signup, error, loading }) => {
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" onChange={handleChange} required />
+          <input
+            type="password"
+            id="password"
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="input-field">
-          <button className="btn red darken-3 z-depth-1" type="submit">Sign Up</button>
+          <button className="btn red darken-3 z-depth-1" type="submit">
+            Sign Up
+          </button>
         </div>
         <p className="grey-text">
           Already a user?
@@ -54,13 +59,13 @@ const SignUp = ({ signup, error, loading }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   error: state.auth.error,
   loading: state.auth.loading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  signup: user => dispatch(signup(user)),
+const mapDispatchToProps = (dispatch) => ({
+  signup: (user) => dispatch(signup(user)),
 });
 
 SignUp.propTypes = {

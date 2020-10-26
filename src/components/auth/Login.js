@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/loginActions';
@@ -7,20 +7,17 @@ import Errors from '../Errors';
 import Spinner from '../layout/Spinner';
 /* eslint-disable jsx-a11y/label-has-associated-control */
 const Login = ({ login, error, loading }) => {
-  const history = useHistory();
-
   const state = {
     email: '',
     password: '',
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     login(state);
-    history.push('/bikes');
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     state[e.target.id] = e.target.value;
   };
 
@@ -36,10 +33,17 @@ const Login = ({ login, error, loading }) => {
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" onChange={handleChange} required />
+          <input
+            type="password"
+            id="password"
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="input-field">
-          <button className="btn red darken-3 z-depth-1" type="submit">Login</button>
+          <button className="btn red darken-3 z-depth-1" type="submit">
+            Login
+          </button>
         </div>
         <p className="grey-text">
           Create an account
@@ -50,13 +54,13 @@ const Login = ({ login, error, loading }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   error: state.auth.error,
   loading: state.auth.loading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  login: user => dispatch(login(user)),
+const mapDispatchToProps = (dispatch) => ({
+  login: (user) => dispatch(login(user)),
 });
 
 Login.propTypes = {
