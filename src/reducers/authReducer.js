@@ -34,6 +34,8 @@ const authReducer = (state = initState, action) => {
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
     case LOGOUT:
+      alert('logout');
+      console.log('logitu');
       return {
         ...state,
         authStatus: false,

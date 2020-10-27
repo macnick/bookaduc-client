@@ -65,7 +65,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
 };
 

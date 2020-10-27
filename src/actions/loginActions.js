@@ -15,20 +15,24 @@ const loginRequest = () => ({
   loading: true,
 });
 
-const loginSuccess = data => ({
+const loginSuccess = (data) => ({
   type: LOGIN_SUCCESS,
   payload: data,
 });
 
-const loginFail = error => ({
+const loginFail = (error) => ({
   type: LOGIN_FAIL,
   payload: error,
 });
 
-const login = user => dispatch => {
+const logoutAction = () => ({
+  type: LOGOUT,
+});
+
+const login = (user) => (dispatch) => {
   dispatch(loginRequest());
   fetchData('post', `${LOGIN_URL}`, user)
-    .then(response => {
+    .then((response) => {
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
       setAuthorizationToken(token);
@@ -41,10 +45,10 @@ const login = user => dispatch => {
     });
 };
 
-const logout = () => dispatch => {
-  dispatch({
-    type: LOGOUT,
-  });
+const logout = () => (dispatch) => {
+  dispatch(logoutAction());
+  localStorage.removeItem('token');
+  alert('clear');
 };
 
 export { login, logout };
