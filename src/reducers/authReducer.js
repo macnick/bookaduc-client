@@ -8,9 +8,16 @@ import {
   SIGNUP_FAIL,
 } from '../actions/actionTypes';
 
+const token = localStorage.getItem('token');
+let authStatus = false;
+
+if (token) {
+  authStatus = true;
+}
+
 const initState = {
-  token: '',
-  authStatus: false,
+  token,
+  authStatus,
   loading: false,
 };
 
@@ -34,8 +41,6 @@ const authReducer = (state = initState, action) => {
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
     case LOGOUT:
-      alert('logout');
-      console.log('logitu');
       return {
         ...state,
         authStatus: false,

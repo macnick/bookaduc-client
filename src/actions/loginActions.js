@@ -25,6 +25,11 @@ const loginFail = (error) => ({
   payload: error,
 });
 
+const logUser = (data) => ({
+  type: 'LOG_USER',
+  // payload: data,
+});
+
 const logoutAction = () => ({
   type: LOGOUT,
 });
@@ -37,6 +42,9 @@ const login = (user) => (dispatch) => {
       const token = response.data.auth_token;
       setAuthorizationToken(token);
       const userId = parseJwt(token).user_id;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', userId);
+      alert('setting the storage');
       dispatch(bikesList());
       dispatch(loadUserBookings(userId));
     })
@@ -51,4 +59,10 @@ const logout = () => (dispatch) => {
   alert('clear');
 };
 
-export { login, logout };
+const logged = (userId) => (dispatch) => {
+  // dispatch(logUser());
+  dispatch(bikesList());
+  dispatch(loadUserBookings(userId));
+};
+
+export { login, logout, logged };

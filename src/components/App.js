@@ -4,6 +4,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+import { logged } from '../actions/loginActions';
+import { useDispatch } from 'react-redux';
+
 import Navbar from './layout/Navbar';
 import BikeList from '../containers/BikeList';
 import BikeDetails from './layout/BikeDetails';
@@ -14,7 +17,13 @@ import SignUp from './auth/SignUp';
 import UserPage from '../containers/UserPage';
 
 const App = () => {
-  const loggedIn = useSelector((store) => store.auth.authStatus);
+  const dispatch = useDispatch();
+  let loggedIn = useSelector((store) => store.auth.authStatus);
+
+  if (loggedIn) {
+    let user = localStorage.getItem('user');
+    dispatch(logged(user));
+  }
 
   return (
     <BrowserRouter>
