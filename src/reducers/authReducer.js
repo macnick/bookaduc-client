@@ -7,17 +7,21 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
 } from '../actions/actionTypes';
+import parseJwt from '../helpers/parseJWT';
 
 const token = localStorage.getItem('token');
+let userId = null;
 let authStatus = false;
 
 if (token) {
   authStatus = true;
+  userId = parseJwt(token).user_id;
 }
 
 const initState = {
   token,
   authStatus,
+  userId: userId,
   loading: false,
 };
 
@@ -35,6 +39,7 @@ const authReducer = (state = initState, action) => {
         ...state,
         token: action.payload.auth_token,
         authStatus: true,
+        userId: parseJwt(action.payload.auth_token).user_id,
         loading: false,
         error: null,
       };
@@ -45,6 +50,7 @@ const authReducer = (state = initState, action) => {
         ...state,
         authStatus: false,
         token: '',
+        userId: null,
         loading: false,
         error: action.payload,
       };

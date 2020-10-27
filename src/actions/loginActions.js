@@ -38,6 +38,7 @@ const login = (user) => (dispatch) => {
   dispatch(loginRequest());
   fetchData('post', `${LOGIN_URL}`, user)
     .then((response) => {
+      console.log('response', response);
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
       setAuthorizationToken(token);
