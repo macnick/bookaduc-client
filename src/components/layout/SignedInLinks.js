@@ -7,7 +7,7 @@ import { logout } from '../../actions/loginActions';
 const SingedInLinks = ({ name }) => {
   const dispatch = useDispatch();
   const handleLogout = () => {
-    logout()(dispatch);
+    dispatch(logout());
   };
 
   return (

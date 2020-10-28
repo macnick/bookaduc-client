@@ -30,19 +30,14 @@ const logUser = (data) => ({
   // payload: data,
 });
 
-const logoutAction = () => ({
-  type: LOGOUT,
-});
-
 const login = (user) => (dispatch) => {
   dispatch(loginRequest());
   fetchData('post', `${LOGIN_URL}`, user)
     .then((response) => {
-      console.log('response', response);
       dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
-      setAuthorizationToken(token);
       const userId = parseJwt(token).user_id;
+      setAuthorizationToken(token);
       localStorage.setItem('token', token);
       localStorage.setItem('user', userId);
       alert('setting the storage');
@@ -54,10 +49,13 @@ const login = (user) => (dispatch) => {
     });
 };
 
-const logout = () => (dispatch) => {
-  dispatch(logoutAction());
+const logout = () => {
   localStorage.removeItem('token');
+  localStorage.removeItem('user');
   alert('clear');
+  return {
+    type: LOGOUT,
+  };
 };
 
 const logged = (userId) => (dispatch) => {
