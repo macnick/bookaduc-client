@@ -15,20 +15,20 @@ const loginRequest = () => ({
   loading: true,
 });
 
-const loginSuccess = (data) => ({
+const loginSuccess = data => ({
   type: LOGIN_SUCCESS,
   payload: data,
 });
 
-const loginFail = (error) => ({
+const loginFail = error => ({
   type: LOGIN_FAIL,
   payload: error,
 });
 
-const login = (user) => (dispatch) => {
+const login = user => dispatch => {
   dispatch(loginRequest());
   fetchData('post', `${LOGIN_URL}`, user)
-    .then((response) => {
+    .then(response => {
       const token = response.data.auth_token;
       const userId = parseJwt(token).user_id;
       response.data.userId = userId;
@@ -52,19 +52,17 @@ const logout = () => {
   };
 };
 
-const checkAuth = () => {
-  return (dispatch) => {
-    const auth_token = localStorage.getItem('token');
-    const userId = localStorage.getItem('user');
-    if (!auth_token) {
-      dispatch(logout());
-    } else {
-      dispatch(loginSuccess({ auth_token, userId }));
-      setAuthorizationToken(auth_token);
-      dispatch(bikesList());
-      dispatch(loadUserBookings(userId));
-    }
-  };
+const checkAuth = () => dispatch => {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('user');
+  if (!token) {
+    dispatch(logout());
+  } else {
+    dispatch(loginSuccess({ auth_token: token, userId }));
+    setAuthorizationToken(token);
+    dispatch(bikesList());
+    dispatch(loadUserBookings(userId));
+  }
 };
 
 export { login, logout, checkAuth };

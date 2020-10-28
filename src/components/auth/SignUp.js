@@ -13,12 +13,12 @@ const SignUp = ({ signup, error, loading }) => {
     password: '',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     signup(state);
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     state[e.target.id] = e.target.value;
   };
 
@@ -59,15 +59,15 @@ const SignUp = ({ signup, error, loading }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   error: state.auth.error,
   loading: state.auth.loading,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  signup: (user) => dispatch(signup(user)),
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(signup(user)),
 });
-
+/* eslint-disable react/require-default-props */
 SignUp.propTypes = {
   signup: PropTypes.func.isRequired,
   error: PropTypes.string,

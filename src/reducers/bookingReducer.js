@@ -8,7 +8,7 @@ import {
   BOOKING_DELETED,
 } from '../actions/actionTypes';
 
-let userId = localStorage.getItem('user');
+const userId = localStorage.getItem('user');
 
 const initState = {
   user_id: userId,

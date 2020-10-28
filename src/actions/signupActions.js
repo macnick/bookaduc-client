@@ -14,20 +14,20 @@ const signupRequest = () => ({
   loading: true,
 });
 
-const signupSuccess = (data) => ({
+const signupSuccess = data => ({
   type: SIGNUP_SUCCESS,
   payload: data,
 });
 
-const signupFail = (error) => ({
+const signupFail = error => ({
   type: SIGNUP_FAIL,
   payload: error,
 });
 
-const signup = (user) => (dispatch) => {
+const signup = user => dispatch => {
   dispatch(signupRequest());
   fetchData('post', `${SIGNUP_URL}`, user)
-    .then((response) => {
+    .then(response => {
       if (response.status === 201) {
         const token = response.data.auth_token;
         const userId = parseJwt(token).user_id;
@@ -42,7 +42,7 @@ const signup = (user) => (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        signupFail('An account with this email already exists, please login')
+        signupFail('An account with this email already exists, please login'),
       );
     });
 };

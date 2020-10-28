@@ -1,11 +1,12 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-named-as-default-member */
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
 
 import { checkAuth } from '../actions/loginActions';
-import { useDispatch } from 'react-redux';
 
 import Navbar from './layout/Navbar';
 import BikeList from '../containers/BikeList';
@@ -23,7 +24,7 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
-  let loggedIn = useSelector((store) => store.auth.authStatus);
+  const loggedIn = useSelector(store => store.auth.authStatus);
 
   return (
     <BrowserRouter>

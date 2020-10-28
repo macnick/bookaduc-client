@@ -12,12 +12,12 @@ const Login = ({ login, error, loading }) => {
     password: '',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     login(state);
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     state[e.target.id] = e.target.value;
   };
 
@@ -53,14 +53,14 @@ const Login = ({ login, error, loading }) => {
     </div>
   );
 };
-
-const mapStateToProps = (state) => ({
+/* eslint-disable react/require-default-props */
+const mapStateToProps = state => ({
   error: state.auth.error,
   loading: state.auth.loading,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  login: (user) => dispatch(login(user)),
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(login(user)),
 });
 
 Login.propTypes = {

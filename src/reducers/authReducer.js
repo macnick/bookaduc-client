@@ -22,7 +22,7 @@ if (token) {
 const initState = {
   token,
   authStatus,
-  userId: userId,
+  userId,
   loading: false,
 };
 
