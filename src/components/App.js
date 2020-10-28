@@ -1,10 +1,10 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-named-as-default-member */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import { logged } from '../actions/loginActions';
+import { checkAuth } from '../actions/loginActions';
 import { useDispatch } from 'react-redux';
 
 import Navbar from './layout/Navbar';
@@ -18,12 +18,13 @@ import UserPage from '../containers/UserPage';
 
 const App = () => {
   const dispatch = useDispatch();
-  let loggedIn = useSelector((store) => store.auth.authStatus);
+  useEffect(() => {
+    dispatch(checkAuth());
+    // checkAuth();
+    // eslint-disable-next-line
+  }, []);
 
-  if (loggedIn) {
-    let user = localStorage.getItem('user');
-    dispatch(logged(user));
-  }
+  let loggedIn = useSelector((store) => store.auth.authStatus);
 
   return (
     <BrowserRouter>

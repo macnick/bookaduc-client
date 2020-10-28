@@ -25,18 +25,15 @@ const loginFail = (error) => ({
   payload: error,
 });
 
-const logUser = (data) => ({
-  type: 'LOG_USER',
-  // payload: data,
-});
-
 const login = (user) => (dispatch) => {
   dispatch(loginRequest());
   fetchData('post', `${LOGIN_URL}`, user)
     .then((response) => {
-      dispatch(loginSuccess(response.data));
       const token = response.data.auth_token;
       const userId = parseJwt(token).user_id;
+      response.data.userId = userId;
+      console.log(response.data);
+      dispatch(loginSuccess(response.data));
       setAuthorizationToken(token);
       localStorage.setItem('token', token);
       localStorage.setItem('user', userId);
@@ -58,10 +55,19 @@ const logout = () => {
   };
 };
 
-const logged = (userId) => (dispatch) => {
-  // dispatch(logUser());
-  dispatch(bikesList());
-  dispatch(loadUserBookings(userId));
+const checkAuth = () => {
+  return (dispatch) => {
+    const auth_token = localStorage.getItem('token');
+    const userId = localStorage.getItem('user');
+    if (!auth_token) {
+      dispatch(logout());
+    } else {
+      dispatch(loginSuccess({ auth_token, userId }));
+      setAuthorizationToken(auth_token);
+      dispatch(bikesList());
+      dispatch(loadUserBookings(userId));
+    }
+  };
 };
 
-export { login, logout, logged };
+export { login, logout, checkAuth };

@@ -7,6 +7,7 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
 } from '../actions/actionTypes';
+// possibly not needed start
 import parseJwt from '../helpers/parseJWT';
 
 const token = localStorage.getItem('token');
@@ -17,7 +18,7 @@ if (token) {
   authStatus = true;
   userId = parseJwt(token).user_id;
 }
-
+// possibly not needed end
 const initState = {
   token,
   authStatus,
@@ -39,7 +40,7 @@ const authReducer = (state = initState, action) => {
         ...state,
         token: action.payload.auth_token,
         authStatus: true,
-        userId: parseJwt(action.payload.auth_token).user_id,
+        userId: action.payload.userId,
         loading: false,
         error: null,
       };
