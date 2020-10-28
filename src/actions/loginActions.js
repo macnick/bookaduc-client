@@ -32,12 +32,10 @@ const login = (user) => (dispatch) => {
       const token = response.data.auth_token;
       const userId = parseJwt(token).user_id;
       response.data.userId = userId;
-      console.log(response.data);
       dispatch(loginSuccess(response.data));
       setAuthorizationToken(token);
       localStorage.setItem('token', token);
       localStorage.setItem('user', userId);
-      alert('setting the storage');
       dispatch(bikesList());
       dispatch(loadUserBookings(userId));
     })
@@ -49,7 +47,6 @@ const login = (user) => (dispatch) => {
 const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  alert('clear');
   return {
     type: LOGOUT,
   };

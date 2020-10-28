@@ -20,7 +20,6 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAuth());
-    // checkAuth();
     // eslint-disable-next-line
   }, []);
 
