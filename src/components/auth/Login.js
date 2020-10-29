@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {useForm} from 'react-hook-form';
+// do not need controlled inputs any more
+
 import { login } from '../../actions/loginActions';
 import Errors from '../Errors';
 import Spinner from '../layout/Spinner';
@@ -12,9 +15,10 @@ const Login = ({ login, error, loading }) => {
     password: '',
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    login(state);
+  const {register, errors, handleSubmit} = useForm();
+
+  const onSubmit = data => {
+    login(data);
   };
 
   const handleChange = e => {
@@ -23,22 +27,29 @@ const Login = ({ login, error, loading }) => {
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit} className="white">
+      <form onSubmit={handleSubmit(onSubmit)} className="white">
         {loading && <Spinner />}
         {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Log In</h5>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" onChange={handleChange} required />
+          <input type="email" name="email" onChange={handleChange} ref={register({required: true})} />
+          {errors.email && <Errors error="You have to fill you email"/>}
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password"
+            name="password"
             onChange={handleChange}
-            required
+            ref={register({
+              minLength: {
+              value: 3,
+              message: 'error message'
+            }
+          })}
           />
+          {errors.password && <Errors error="Password must be at leat 3 characters"/>}
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">
