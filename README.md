@@ -4,13 +4,14 @@
 
 This is the final Microverse's capstone project!! The purpose of the project is to create a Full-Stack app that works with a backend in Rails and a Frontend in React. This repo contains the frontend project. It's a React app that works as an interface to handle connections to the backend API. This is the link to the backend [bookaduc-api](https://github.com/macnick/bookaduc-api/tree/authentication)
 
-The user can
+The App can
 
 1. Create and authenticate users
 2. Get a list of available bikes to ride
 3. Book an appointment for a ride
 4. See the list of the user's appointments
 5. Navigate using the sidebar
+6. It is optimized for tablets but it is responsive and looks nice everywhere
 
 ## Table of Contents
 
@@ -31,6 +32,7 @@ The user can
 - React-DOM
 - React-Create-App
 - React-Router-Dom
+- React-Hook-Form
 - Redux
 - npm
 - HTML/CSS
@@ -42,7 +44,7 @@ The user can
 
 ## Live version
 
-A live version will be hosted on Netlify.
+A live version is hosted on Netlify.
 
 - [**BookADuc**](https://bookaduc.netlify.app) @ Netlify
 
@@ -50,7 +52,17 @@ A live version will be hosted on Netlify.
 
 ## Screenshots
 
-### Login Page
+<p align="center">
+<img src="src/assets/img/sh-01.jpg">
+</p>
+
+<p align="center">
+<img src="src/assets/img/sh-02.jpg">
+</p>
+
+<p align="center">
+<img src="src/assets/img/sh-03.jpg">
+</p>
 
 [Up](#Table-of-Contents)
 
