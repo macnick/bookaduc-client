@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 // do not need controlled inputs any more
 
 import { login } from '../../actions/loginActions';
@@ -15,7 +15,7 @@ const Login = ({ login, error, loading }) => {
     password: '',
   };
 
-  const {register, errors, handleSubmit} = useForm();
+  const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = data => {
     login(data);
@@ -33,8 +33,8 @@ const Login = ({ login, error, loading }) => {
         <h5 className="grey-text text-darken-3">Log In</h5>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" onChange={handleChange} ref={register({required: true})} />
-          {errors.email && <Errors error="You have to fill you email"/>}
+          <input type="email" name="email" onChange={handleChange} ref={register({ required: true })} />
+          {errors.email && <Errors error="You have to fill you email" />}
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
@@ -44,12 +44,12 @@ const Login = ({ login, error, loading }) => {
             onChange={handleChange}
             ref={register({
               minLength: {
-              value: 3,
-              message: "Password must be at leat 3 characters"
-            }
-          })}
+                value: 3,
+                message: 'Password must be at leat 3 characters',
+              },
+            })}
           />
-          {errors.password && <Errors error={errors.password.message}/>}
+          {errors.password && <Errors error={errors.password.message} />}
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">
