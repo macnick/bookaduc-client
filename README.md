@@ -20,7 +20,7 @@ The App can
 - [Video](#Video)
 - [Screenshots](#Screenshots)
 - [Install and Run](#How-to-Install-and-Run-in-Your-Computer)
-- [Acknowledgments](#Acknowledgments)
+- [Acknowledgements](#Acknowledgements)
 - [Author](#Author)
 - [Contributing](#Contributing)
 - [Show your support](#Show-your-support)
@@ -74,6 +74,12 @@ Use your terminal and run the commands after each instruction.
 
 | Command | Description |
 | ------- | ----------- |
+| `git clone https://github.com/macnick/bookaduc-client.git` | Clone the repository to you computer|
+| `cd bookaduc-client` | Navigate to the newly created folder   |
+| `npm install` |   Install dependencies on your directory |
+| `npm start` | Run the app and start the development server |
+|  | Press `Ctrl + c` to kill http-server process |
+| `http://localhost:3000` | Visit this link to use the App |
 
 
 [Up](#Table-of-Contents)
