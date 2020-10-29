@@ -45,11 +45,11 @@ const Login = ({ login, error, loading }) => {
             ref={register({
               minLength: {
               value: 3,
-              message: 'error message'
+              message: "Password must be at leat 3 characters"
             }
           })}
           />
-          {errors.password && <Errors error="Password must be at leat 3 characters"/>}
+          {errors.password && <Errors error={errors.password.message}/>}
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">

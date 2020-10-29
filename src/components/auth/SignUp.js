@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
 import signup from '../../actions/signupActions';
 import Errors from '../Errors';
 import Spinner from '../layout/Spinner';
@@ -13,9 +14,10 @@ const SignUp = ({ signup, error, loading }) => {
     password: '',
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    signup(state);
+  const {register, errors, handleSubmit} = useForm();
+
+  const onSubmit = data => {
+    signup(data);
   };
 
   const handleChange = e => {
@@ -24,26 +26,32 @@ const SignUp = ({ signup, error, loading }) => {
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit} className="white">
+      <form onSubmit={handleSubmit(onSubmit)} className="white">
         {loading && <Spinner />}
         {error && <Errors error={error} />}
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" onChange={handleChange} required />
+          <input type="text" name="name" onChange={handleChange} ref={register({required: true, minLength: 3})} />
+          {errors.name && errors.name.type === "required" && <Errors error="You have to fill you name"/>}
+          {errors.name && <Errors error="Name must be at least 3 characters long"/>}
         </div>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" onChange={handleChange} required />
+          <input type="email" name="email" onChange={handleChange} ref={register({required: true, pattern: /^\S+@\S+$/i})} />
+          {errors.email && errors.email.type == "required" && <Errors error="You have to fill your email"/>}
+          {errors.email && errors.email.type == "pattern" && <Errors error="You have to fill a valid email"/>}
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password"
+            name="password"
             onChange={handleChange}
-            required
+            ref={register({required: true, minLength: 4})}
           />
+          {errors.password && errors.password.type == "required" && <Errors error="You have to type a password"/>}
+          {errors.password && errors.password.type == "minLength" && <Errors error="Password must be at least 4 characters long"/>}
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">
