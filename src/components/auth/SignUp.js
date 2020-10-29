@@ -32,15 +32,15 @@ const SignUp = ({ signup, error, loading }) => {
         <h5 className="grey-text text-darken-3">Sign Up</h5>
         <div className="input-field">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" onChange={handleChange} ref={register({required: true, minLength: 3})} />
+          <input type="text" name="name" ref={register({required: true, minLength: 3})} />
           {errors.name && errors.name.type === "required" && <Errors error="You have to fill you name"/>}
           {errors.name && <Errors error="Name must be at least 3 characters long"/>}
         </div>
         <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" onChange={handleChange} ref={register({required: true, pattern: /^\S+@\S+$/i})} />
-          {errors.email && errors.email.type == "required" && <Errors error="You have to fill your email"/>}
-          {errors.email && errors.email.type == "pattern" && <Errors error="You have to fill a valid email"/>}
+          <input type="text" name="email" onChange={handleChange} ref={register({required: true, pattern: /^\S+@\S+$/})} />
+          {errors.email && errors.email.type === "required" && <Errors error="You have to fill your email"/>}
+          {errors.email && errors.email.type === "pattern" && <Errors error="You have to fill a valid email"/>}
         </div>
         <div className="input-field">
           <label htmlFor="password">Password</label>
@@ -50,8 +50,8 @@ const SignUp = ({ signup, error, loading }) => {
             onChange={handleChange}
             ref={register({required: true, minLength: 4})}
           />
-          {errors.password && errors.password.type == "required" && <Errors error="You have to type a password"/>}
-          {errors.password && errors.password.type == "minLength" && <Errors error="Password must be at least 4 characters long"/>}
+          {errors.password && errors.password.type === "required" && <Errors error="You have to type a password"/>}
+          {errors.password && errors.password.type === "minLength" && <Errors error="Password must be at least 4 characters long"/>}
         </div>
         <div className="input-field">
           <button className="btn red darken-3 z-depth-1" type="submit">
