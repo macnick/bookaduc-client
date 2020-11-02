@@ -36,6 +36,7 @@ The App can
 - Redux
 - npm
 - HTML/CSS
+- Materializecss
 - ES6
 - ESlint
 - Netlify
