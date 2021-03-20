@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders my Redux connected component should render the App 1`] = `
+<div
+  className="app"
+>
+  <div
+    className="container section"
+  >
+    <ul
+      className="sidenav right"
+      id="menu-side"
+    >
+      <li>
+        <a
+          aria-current="page"
+          className="sidenav-close active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <i
+            className="material-icons"
+          >
+            person
+          </i>
+          Batman
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          className="sidenav-close"
+          href="/user"
+          onClick={[Function]}
+        >
+          <i
+            className="material-icons"
+          >
+            date_range
+          </i>
+          Appointments
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          className="sidenav-close"
+          href="/bikes"
+          onClick={[Function]}
+        >
+          <i
+            className="material-icons"
+          >
+            motorcycle
+          </i>
+          Bikes
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          className="sidenav-close"
+          href="/logout"
+          onClick={[Function]}
+        >
+          <i
+            className="material-icons"
+          >
+            logout
+          </i>
+          Log Out
+        </a>
+      </li>
+    </ul>
+    <button
+      className="sidenav-trigger"
+      data-target="menu-side"
+      href="#"
+      type="button"
+    >
+      <i
+        className="material-icons small"
+      >
+        menu
+      </i>
+    </button>
+  </div>
+  <div
+    className="dashboard "
+    id="bikelist"
+  >
+    <div
+      className="react-multi-carousel-list  "
+    >
+      <ul
+        className="react-multi-carousel-track "
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseMove={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "overflow": "unset",
+            "transform": "translate3d(0px,0,0)",
+            "transition": "none",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
