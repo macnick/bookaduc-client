@@ -2,7 +2,7 @@
 
 # BookADuc App
 
-This is the final Microverse's capstone project. The purpose of the project is to create a Full-Stack app that works with a back-end written in Rails and a front-end in React. This repo contains the front-end part of the project. It's a React app that works as an interface to handle connections to the backend API. This is the link to the backend [bookaduc-api](https://github.com/macnick/bookaduc-api/tree/authentication).
+This is for the final Microverse's capstone project. The purpose of the project is to create a Full-Stack app that works with a back-end written in Rails and a front-end in React. This repo contains the front-end part of the project. It's a React app that works as an interface to handle connections to the backend API. This is the link to the backend [bookaduc-api](https://github.com/macnick/bookaduc-api/tree/authentication).
 
 The App can
 
